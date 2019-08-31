@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
+      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,13 +50,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\PlayerFactory.cs" />
+    <Compile Include="Handlers\EnemySpawner.cs" />
+    <Compile Include="Handlers\IEnemySpawner.cs" />
+    <Compile Include="Handlers\IPlayerHandler.cs" />
+    <Compile Include="Handlers\IScoreHandler.cs" />
+    <Compile Include="Handlers\PlayerHandler.cs" />
+    <Compile Include="Handlers\ScoreHandler.cs" />
+    <Compile Include="Infrastructure\IocContainer.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Enemy.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="Models\Direction.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\IInteractingObject.cs" />
+    <Compile Include="Models\IMovable.cs" />
+    <Compile Include="Models\InteractingObject.cs" />
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Point.cs" />
+    <Compile Include="Models\Score.cs" />
+    <Compile Include="Models\Size.cs" />
+    <Compile Include="Models\TimeInterval.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -66,6 +91,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +104,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\missile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\player.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
