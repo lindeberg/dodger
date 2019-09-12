@@ -1,14 +1,15 @@
 using System;
-using Dodger.Models;
+using Dodger.Core.ValueObjects;
 
-namespace Dodger.Entities
+namespace Dodger.Core.Entities
 {
     public class Enemy : InteractingObject
     {
         public Enemy(Point location) : base(location, new Size(20, 20), "missile.png")
         {
+            SetDirection(Direction.Down);
         }
 
-        public TimeInterval SpawnTimeInterval { get; set; } = new TimeInterval(10, 100);
+        public Guid Id { get; } = Guid.NewGuid();
     }
 }

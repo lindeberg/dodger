@@ -50,12 +50,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\EnemyPictureBox.cs" />
+    <Compile Include="Controls\PictureBox.cs" />
+    <Compile Include="Core\Entities\Enemy.cs" />
+    <Compile Include="Core\Entities\Game.cs" />
+    <Compile Include="Core\Entities\IInteractingObject.cs" />
+    <Compile Include="Core\Entities\IMovable.cs" />
+    <Compile Include="Core\Entities\InteractingObject.cs" />
+    <Compile Include="Core\Entities\Player.cs" />
+    <Compile Include="Core\Entities\Score.cs" />
+    <Compile Include="Core\Handlers\IEnemySpawner.cs" />
+    <Compile Include="Core\Handlers\IPlayerMover.cs" />
+    <Compile Include="Core\Handlers\IScoreHandler.cs" />
+    <Compile Include="Core\Repositories\IEnemyRepository.cs" />
+    <Compile Include="Core\ValueObjects\Direction.cs" />
+    <Compile Include="Core\ValueObjects\Point.cs" />
+    <Compile Include="Core\ValueObjects\Size.cs" />
+    <Compile Include="Core\ValueObjects\TimeInterval.cs" />
     <Compile Include="Factories\PlayerFactory.cs" />
+    <Compile Include="Handlers\EnemyDisposer.cs" />
     <Compile Include="Handlers\EnemySpawner.cs" />
-    <Compile Include="Handlers\IEnemySpawner.cs" />
-    <Compile Include="Handlers\IPlayerHandler.cs" />
-    <Compile Include="Handlers\IScoreHandler.cs" />
-    <Compile Include="Handlers\PlayerHandler.cs" />
+    <Compile Include="Handlers\PlayerMover.cs" />
     <Compile Include="Handlers\ScoreHandler.cs" />
     <Compile Include="Infrastructure\IocContainer.cs" />
     <Compile Include="MainForm.cs">
@@ -64,18 +79,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Enemy.cs" />
-    <Compile Include="Entities\Player.cs" />
-    <Compile Include="Models\Direction.cs" />
-    <Compile Include="Models\Game.cs" />
-    <Compile Include="Models\IInteractingObject.cs" />
-    <Compile Include="Models\IMovable.cs" />
-    <Compile Include="Models\InteractingObject.cs" />
-    <Compile Include="Models\Map.cs" />
-    <Compile Include="Models\Point.cs" />
-    <Compile Include="Models\Score.cs" />
-    <Compile Include="Models\Size.cs" />
-    <Compile Include="Models\TimeInterval.cs" />
+    <Compile Include="Persistance\Repositories\EnemyRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

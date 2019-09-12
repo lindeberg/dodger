@@ -33,10 +33,11 @@
         new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.aScore = new System.Windows.Forms.Label();
       this.aScoreLabel = new System.Windows.Forms.Label();
-      this.aEnemySpawnTimer = new System.Windows.Forms.Timer(this.components);
-      this.aPlayerImage = new System.Windows.Forms.PictureBox();
-      this.aScoreTimer = new System.Windows.Forms.Timer(this.components);
-      ((System.ComponentModel.ISupportInitialize) (this.aPlayerImage)).BeginInit();
+      this.enemySpawnTimer = new System.Windows.Forms.Timer(this.components);
+      this.playerPictureBox = new System.Windows.Forms.PictureBox();
+      this.scoreTimer = new System.Windows.Forms.Timer(this.components);
+      this.movementTimer = new System.Windows.Forms.Timer(this.components);
+      ((System.ComponentModel.ISupportInitialize) (this.playerPictureBox)).BeginInit();
       this.SuspendLayout();
       // 
       // aScore
@@ -57,25 +58,30 @@
       this.aScoreLabel.TabIndex = 2;
       this.aScoreLabel.Text = "Score:";
       // 
-      // aEnemySpawnTimer
+      // enemySpawnTimer
       // 
-      this.aEnemySpawnTimer.Enabled = true;
+      this.enemySpawnTimer.Enabled = true;
       // 
-      // aPlayerImage
+      // playerPictureBox
       // 
-      this.aPlayerImage.Image = ((System.Drawing.Image) (resources.GetObject("aPlayerImage.Image")));
-      this.aPlayerImage.Location = new System.Drawing.Point(472, 500);
-      this.aPlayerImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.aPlayerImage.Name = "aPlayerImage";
-      this.aPlayerImage.Size = new System.Drawing.Size(68, 79);
-      this.aPlayerImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-      this.aPlayerImage.TabIndex = 3;
-      this.aPlayerImage.TabStop = false;
+      this.playerPictureBox.Image = ((System.Drawing.Image) (resources.GetObject("playerPictureBox.Image")));
+      this.playerPictureBox.Location = new System.Drawing.Point(342, 412);
+      this.playerPictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.playerPictureBox.Name = "playerPictureBox";
+      this.playerPictureBox.Size = new System.Drawing.Size(28, 28);
+      this.playerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.playerPictureBox.TabIndex = 3;
+      this.playerPictureBox.TabStop = false;
       // 
-      // aScoreTimer
+      // scoreTimer
       // 
-      this.aScoreTimer.Enabled = true;
-      this.aScoreTimer.Interval = 1000;
+      this.scoreTimer.Enabled = true;
+      this.scoreTimer.Interval = 1000;
+      // 
+      // movementTimer
+      // 
+      this.movementTimer.Enabled = true;
+      this.movementTimer.Interval = 1;
       // 
       // MainForm
       // 
@@ -83,23 +89,24 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.Control;
       this.ClientSize = new System.Drawing.Size(1080, 619);
-      this.Controls.Add(this.aPlayerImage);
+      this.Controls.Add(this.playerPictureBox);
       this.Controls.Add(this.aScoreLabel);
       this.Controls.Add(this.aScore);
       this.Location = new System.Drawing.Point(22, 22);
       this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.Name = "MainForm";
-      ((System.ComponentModel.ISupportInitialize) (this.aPlayerImage)).EndInit();
+      ((System.ComponentModel.ISupportInitialize) (this.playerPictureBox)).EndInit();
       this.ResumeLayout(false);
     }
 
     #endregion
 
-    private System.Windows.Forms.PictureBox aPlayerImage;
     private System.Windows.Forms.Label aScore;
     private System.Windows.Forms.Label aScoreLabel;
-    private System.Windows.Forms.Timer aScoreTimer;
-    private System.Windows.Forms.Timer aEnemySpawnTimer;
+    private System.Windows.Forms.Timer enemySpawnTimer;
+    private System.Windows.Forms.Timer scoreTimer;
+    private System.Windows.Forms.PictureBox playerPictureBox;
+    private System.Windows.Forms.Timer movementTimer;
   }
 }
 

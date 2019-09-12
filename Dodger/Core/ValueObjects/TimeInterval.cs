@@ -1,4 +1,4 @@
-namespace Dodger.Models
+namespace Dodger.Core.ValueObjects
 {
     public struct TimeInterval
     {

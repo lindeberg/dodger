@@ -1,13 +1,11 @@
 using System;
-using System.Drawing;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
-using Dodger.Annotations;
-using Dodger.Entities;
-using Dodger.Models;
-using Point = Dodger.Models.Point;
-using Size = System.Drawing.Size;
+using Dodger.Controls;
+using Dodger.Core.Entities;
+using Dodger.Core.Handlers;
+using Dodger.Core.Repositories;
+using PictureBox = System.Windows.Forms.PictureBox;
+using Point = Dodger.Core.ValueObjects.Point;
 
 namespace Dodger.Handlers
 {
@@ -15,114 +13,75 @@ namespace Dodger.Handlers
     {
         private readonly Timer _enemySpawnTimer;
         private readonly MainForm _form;
-        private readonly Player _player;
-        private int _enemyCount;
+        private readonly Timer _movementTimer;
+        private readonly IEnemyRepository _enemyRepository;
 
-        public EnemySpawner(Timer enemySpawnTimer, MainForm form, Player player)
+        public EnemySpawner(Timer enemySpawnTimer, MainForm form, Timer movementTimer, IEnemyRepository enemyRepository)
         {
             _enemySpawnTimer = enemySpawnTimer ?? throw new ArgumentNullException(nameof(enemySpawnTimer));
             _form = form ?? throw new ArgumentNullException(nameof(form));
-            _player = player ?? throw new ArgumentNullException(nameof(player));
+            _movementTimer = movementTimer ?? throw new ArgumentNullException(nameof(movementTimer));
+            _enemyRepository = enemyRepository;
         }
 
         public void StartSpawningEnemies()
         {
-            _enemySpawnTimer.Tick += SpawnEnemy;
+            _enemySpawnTimer.Tick += (sender, e) => SpawnEnemy();
+            _movementTimer.Tick += (sender, e) => MoveEnemies();
         }
 
-        private void SpawnEnemy(object sender, EventArgs e)
+        private void MoveEnemies()
         {
-            var location = CreateRandomPoint();
-            var enemy = new Enemy(location);
-
-            var pictureBox = CreateAndSetEnemyPicture(enemy);
-
-            CreateAndSetEnemyMovementTimer(enemy, pictureBox);
-
-            _enemyCount++;
-
-            Point CreateRandomPoint()
+            foreach (var enemy in _enemyRepository.GetAll())
             {
-                var random = new Random();
-                var x = random.Next(0, _form.Width);
-                var y = random.Next(0, _form.Height);
-                
-                var point = new Point(x, y);
-
-                while (LocationIsTooCloseToPlayer(point))
-                {
-                    x = random.Next(0, _form.Width);
-                    y = random.Next(0, _form.Height);
-                
-                    point = new Point(x, y);
-                }
-                
-                return point;
+                MoveEnemy(enemy);
             }
         }
 
-        private bool LocationIsTooCloseToPlayer(Point location)
+        private void SpawnEnemy()
         {
-            //TODO: Implement
-            return false;
+            var enemy = new Enemy(CreateRandomPoint())
+            {
+                Size = CreateRandomSize()
+            };
+
+            var pictureBox = new EnemyPictureBox(enemy.Id, $"enemy-{enemy.Id}", enemy.Size, enemy.Location, enemy.ImagePath);
+            _form.Controls.Add(pictureBox);
+            
+            enemy.Moved += (sender, e) => MovePictureBox(enemy, pictureBox);
+
+            _enemyRepository.Add(enemy);
         }
 
-        private void CreateAndSetEnemyMovementTimer(Enemy enemy, PictureBox pictureBox)
+        private Point CreateRandomPoint()
         {
-            var timer = new Timer
-            {
-                Enabled = true,
-                Interval = new Random().Next(enemy.SpawnTimeInterval.Min, enemy.SpawnTimeInterval.Max),
-            };
-            
-            timer.Tick += (sender, e) => MoveEnemy(enemy);
-            enemy.Moved += (sender, e) => MovePictureBox(enemy, pictureBox);
+            var random = new Random();
+            var x = random.Next(0, _form.Width);
+
+            var point = new Point(x, 0);
+
+            return point;
         }
-        
+
+        private static Core.ValueObjects.Size CreateRandomSize()
+        {
+            var random = new Random();
+            var x = random.Next(0, 100);
+            var y = random.Next(0, 100);
+
+            return new Core.ValueObjects.Size(x, y);
+        }
+
+
         private void MovePictureBox(Enemy enemy, PictureBox pictureBox)
         {
-            var location = enemy.Location;
-            pictureBox.Location = new System.Drawing.Point(location.X, location.Y);
+            pictureBox.Location = new System.Drawing.Point(enemy.Location.X, enemy.Location.Y);
         }
 
         private void MoveEnemy(Enemy enemy)
         {
-            var directions = Enum.GetValues(typeof(Direction));
-
-            var random = new Random();
-
-            var direction = (Direction) directions.GetValue(random.Next(directions.Length));
-            
-            enemy.Move(direction);
-        }
-
-        private PictureBox CreateAndSetEnemyPicture(Enemy enemy)
-        {
-            var pictureBox = new PictureBox
-            {
-                Name = "enemy" + _enemyCount,
-                Size = new Size(enemy.Size.Width, enemy.Size.Height),
-                Location = new System.Drawing.Point(enemy.Location.X, enemy.Location.Y),
-                Image = GetImage(),
-                SizeMode = PictureBoxSizeMode.StretchImage
-            };
-            
-            _form.Controls.Add(pictureBox);
-
-            return pictureBox;
-
-            Image GetImage()
-            {
-                var ImagesDirectoryPath = 
-                    Path.Combine(
-                        Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                        @"Assets\Images"
-                    );
-
-                var imagePath = Path.Combine(ImagesDirectoryPath, enemy.ImagePath);
-
-                return Image.FromFile(imagePath);
-            }
+            var space = new Core.ValueObjects.Size(_form.Size.Width, _form.Size.Height);
+            enemy.Move(space);
         }
     }
 }

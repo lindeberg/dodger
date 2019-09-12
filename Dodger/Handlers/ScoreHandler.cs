@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
-using Dodger.Entities;
+using Dodger.Core.Entities;
+using Dodger.Core.Handlers;
 
 namespace Dodger.Handlers
 {
@@ -19,10 +20,10 @@ namespace Dodger.Handlers
 
         public void StartCountingScore()
         {
-            _timer.Tick += AddPoint;
+            _timer.Tick += (sender, e) => AddPoint();
         }
 
-        private void AddPoint(object sender, EventArgs e)
+        private void AddPoint()
         {
             _player.Score.AddPoint();
             _scoreLabel.Text = _player.Score.Points.ToString();

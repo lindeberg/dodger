@@ -1,6 +1,6 @@
 using System.Windows.Forms;
-using Dodger.Entities;
-using Dodger.Models;
+using Dodger.Core.Entities;
+using Dodger.Core.ValueObjects;
 
 namespace Dodger.Factories
 {
@@ -9,8 +9,8 @@ namespace Dodger.Factories
         public static Player CreatePlayer(PictureBox pictureBox)
         {
             var location = new Point(pictureBox.Location.X, pictureBox.Location.Y);
-
-            var player = new Player(location);
+            var size = new Size(pictureBox.Size.Width, pictureBox.Size.Height);
+            var player = new Player(location, size);
 
             return player;
         }

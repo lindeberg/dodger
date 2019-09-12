@@ -1,12 +1,8 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using Dodger.Annotations;
-using Dodger.Entities;
+﻿using System.Windows.Forms;
+using Dodger.Core.Entities;
 using Dodger.Factories;
 using Dodger.Handlers;
-using Dodger.Models;
-using Point = Dodger.Models.Point;
+using Dodger.Persistance.Repositories;
 
 namespace Dodger
 {
@@ -16,12 +12,14 @@ namespace Dodger
         {
             InitializeComponent();
 
-            var player = PlayerFactory.CreatePlayer(aPlayerImage);
+            var player = PlayerFactory.CreatePlayer(playerPictureBox);
+            var enemyRepository = new EnemyRepository();
             
-            var enemySpawner = new EnemySpawner(aEnemySpawnTimer, this, player);
-            var scoreHandler = new ScoreHandler(aScoreTimer, player, aScore);
-            var playerHandler = new PlayerHandler(player, aPlayerImage, this);
-
+            var enemySpawner = new EnemySpawner(enemySpawnTimer, this, movementTimer, enemyRepository);
+            var scoreHandler = new ScoreHandler(scoreTimer, player, aScore);
+            var playerHandler = new PlayerMover(player, playerPictureBox, this, movementTimer);
+            var enemyDisposer = new EnemyDisposer(movementTimer, enemyRepository, this);
+                
             new Game(enemySpawner, scoreHandler, playerHandler)
                 .Start();
         }

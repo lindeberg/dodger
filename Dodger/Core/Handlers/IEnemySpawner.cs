@@ -1,6 +1,4 @@
-using System.Windows.Forms;
-
-namespace Dodger.Handlers
+namespace Dodger.Core.Handlers
 {
     public interface IEnemySpawner
     {

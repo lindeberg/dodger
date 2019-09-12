@@ -1,4 +1,4 @@
-namespace Dodger.Handlers
+namespace Dodger.Core.Handlers
 {
     public interface IScoreHandler
     {

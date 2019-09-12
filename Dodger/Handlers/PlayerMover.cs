@@ -2,33 +2,50 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Dodger.Annotations;
-using Dodger.Entities;
-using Dodger.Models;
+using Dodger.Core.Entities;
+using Dodger.Core.Handlers;
+using Dodger.Core.ValueObjects;
 
 namespace Dodger.Handlers
 {
-    public class PlayerHandler : IPlayerHandler
+    public class PlayerMover : IPlayerMover
     {
         private readonly Player _player;
         private readonly PictureBox _pictureBox;
         private readonly MainForm _mainForm;
+        private readonly Timer _movementTimer;
 
-        public PlayerHandler(Player player, PictureBox pictureBox, MainForm mainForm)
+        public PlayerMover(Player player, PictureBox pictureBox, MainForm mainForm, Timer movementTimer)
         {
             _player = player ?? throw new ArgumentNullException(nameof(player));
             _pictureBox = pictureBox ?? throw new ArgumentNullException(nameof(pictureBox));
             _mainForm = mainForm ?? throw new ArgumentNullException(nameof(mainForm));
+            _movementTimer = movementTimer ?? throw new ArgumentNullException(nameof(movementTimer));
 
             ConfigureEvents();
         }
 
         private void ConfigureEvents()
         {
-            _mainForm.KeyDown += OnFormKeyDown;
-            _player.Moved += MovePictureBox;
+            _movementTimer.Tick += (sender, e) => MovePlayer();
+            _mainForm.KeyDown += (sender, e) => SetPlayerDirection(e);
+            _mainForm.KeyUp += (sender, e) => NullifyPlayerDirection();
+            _player.Moved += (sender, e) => MovePlayerPictureBox();
         }
 
-        private void OnFormKeyDown(object sender, KeyEventArgs e)
+        private void NullifyPlayerDirection()
+        {
+            _player.StopMoving();
+        }
+
+        private void MovePlayer()
+        {
+            var space = new Size(_mainForm.Size.Width, _mainForm.Size.Height);
+
+            _player.Move(space);
+        }
+
+        private void SetPlayerDirection(KeyEventArgs e)
         {
             var keyBindings = new Dictionary<Keys, Action>
             {
@@ -54,12 +71,13 @@ namespace Dodger.Handlers
 
             var direction = keyDirections[key];
 
-            _player.Move(direction);
+            _player.SetDirection(direction);
         }
 
-        private void MovePictureBox(object sender, EventArgs e)
+        private void MovePlayerPictureBox()
         {
             var location = _player.Location;
+
             _pictureBox.Location = new System.Drawing.Point(location.X, location.Y);
         }
     }
