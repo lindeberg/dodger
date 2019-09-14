@@ -2,9 +2,9 @@ using Dodger.Core.ValueObjects;
 
 namespace Dodger.Core.Entities
 {
-    public interface IInteractingObject : IMovable
+    public interface IInteractingGameObject : IGameObject
     {
-        string ImagePath { get; }
         Size Size { get; set; }
+        Point Location { get; set; }
     }
 }

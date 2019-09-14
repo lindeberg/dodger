@@ -36,7 +36,7 @@
       this.enemySpawnTimer = new System.Windows.Forms.Timer(this.components);
       this.playerPictureBox = new System.Windows.Forms.PictureBox();
       this.scoreTimer = new System.Windows.Forms.Timer(this.components);
-      this.movementTimer = new System.Windows.Forms.Timer(this.components);
+      this.timer = new System.Windows.Forms.Timer(this.components);
       ((System.ComponentModel.ISupportInitialize) (this.playerPictureBox)).BeginInit();
       this.SuspendLayout();
       // 
@@ -44,7 +44,7 @@
       // 
       this.aScore.FlatStyle = System.Windows.Forms.FlatStyle.System;
       this.aScore.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-      this.aScore.Location = new System.Drawing.Point(102, 23);
+      this.aScore.Location = new System.Drawing.Point(102, 22);
       this.aScore.Name = "aScore";
       this.aScore.Size = new System.Drawing.Size(27, 35);
       this.aScore.TabIndex = 1;
@@ -52,7 +52,7 @@
       // 
       // aScoreLabel
       // 
-      this.aScoreLabel.Location = new System.Drawing.Point(28, 23);
+      this.aScoreLabel.Location = new System.Drawing.Point(28, 22);
       this.aScoreLabel.Name = "aScoreLabel";
       this.aScoreLabel.Size = new System.Drawing.Size(67, 31);
       this.aScoreLabel.TabIndex = 2;
@@ -78,10 +78,10 @@
       this.scoreTimer.Enabled = true;
       this.scoreTimer.Interval = 1000;
       // 
-      // movementTimer
+      // timer
       // 
-      this.movementTimer.Enabled = true;
-      this.movementTimer.Interval = 1;
+      this.timer.Enabled = true;
+      this.timer.Interval = 1;
       // 
       // MainForm
       // 
@@ -93,7 +93,7 @@
       this.Controls.Add(this.aScoreLabel);
       this.Controls.Add(this.aScore);
       this.Location = new System.Drawing.Point(22, 22);
-      this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+      this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
       this.Name = "MainForm";
       ((System.ComponentModel.ISupportInitialize) (this.playerPictureBox)).EndInit();
       this.ResumeLayout(false);
@@ -106,7 +106,7 @@
     private System.Windows.Forms.Timer enemySpawnTimer;
     private System.Windows.Forms.Timer scoreTimer;
     private System.Windows.Forms.PictureBox playerPictureBox;
-    private System.Windows.Forms.Timer movementTimer;
+    private System.Windows.Forms.Timer timer;
   }
 }
 

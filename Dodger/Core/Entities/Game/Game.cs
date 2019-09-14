@@ -1,25 +1,23 @@
 using System;
 using Dodger.Core.Handlers;
 
-namespace Dodger.Core.Entities
+namespace Dodger.Core.Entities.Game
 {
     public class Game
     {
         private readonly IEnemySpawner _enemySpawner;
         private readonly IScoreHandler _scoreHandler;
-        private readonly IPlayerMover _playerMover;
 
-        public Game(IEnemySpawner enemySpawner, IScoreHandler scoreHandler, IPlayerMover playerMover)
+        public Game(IEnemySpawner enemySpawner, IScoreHandler scoreHandler)
         {
             _enemySpawner = enemySpawner ?? throw new ArgumentNullException(nameof(enemySpawner));
             _scoreHandler = scoreHandler ?? throw new ArgumentNullException(nameof(scoreHandler));
-            _playerMover = playerMover ?? throw new ArgumentNullException(nameof(playerMover));
         }
 
         public void Start()
         {
             _scoreHandler.StartCountingScore();
-           _enemySpawner.StartSpawningEnemies();
+            _enemySpawner.StartSpawningEnemies();
         }
     }
 }

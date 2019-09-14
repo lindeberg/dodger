@@ -1,16 +1,15 @@
-using System;
+using Dodger.Core.Entities.World;
 using Dodger.Core.ValueObjects;
 
-namespace Dodger.Core.Entities
+namespace Dodger.Core.Entities.Components.MovementComponent
 {
-    public interface IMovable
+    public interface IMovementComponent
     {
-        Point Location { get; }
         int MovementSpeed { get; set; }
         Direction? CurrentDirection { get; }
-        event EventHandler Moved;
-        void Move(Size space);
+        void Move(IWorld world);
         void StopMoving();
         void SetDirection(Direction direction);
+        void Update(IWorld world);
     }
 }

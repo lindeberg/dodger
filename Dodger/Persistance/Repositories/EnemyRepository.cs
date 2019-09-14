@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dodger.Core.Entities;
-using Dodger.Core.Repositories;
+using Dodger.Core.Entities.Enemy;
+using Dodger.Core.Repositories.EnemyRepository;
 
 namespace Dodger.Persistance.Repositories
 {
@@ -19,6 +21,10 @@ namespace Dodger.Persistance.Repositories
         public void Remove(Enemy enemy)
         {
             _enemies.Remove(enemy);
+            
+            Removed?.Invoke(this, new RemovedEventArgs(enemy));
         }
+
+        public event EventHandler<RemovedEventArgs> Removed;
     }
 }

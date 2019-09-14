@@ -1,5 +1,8 @@
 ﻿using System.Windows.Forms;
 using Dodger.Core.Entities;
+using Dodger.Core.Entities.Game;
+using Dodger.Core.Entities.World;
+using Dodger.Core.ValueObjects;
 using Dodger.Factories;
 using Dodger.Handlers;
 using Dodger.Persistance.Repositories;
@@ -12,15 +15,15 @@ namespace Dodger
         {
             InitializeComponent();
 
-            var player = PlayerFactory.CreatePlayer(playerPictureBox);
+            var world = new World(new Size(Width, Height));
+            var player = PlayerFactory.CreatePlayer(playerPictureBox, this);
             var enemyRepository = new EnemyRepository();
-            
-            var enemySpawner = new EnemySpawner(enemySpawnTimer, this, movementTimer, enemyRepository);
+            var gameObjectHandler = new GameObjectHandler(timer, enemyRepository, world, player);
+            var enemyDisposer = new EnemyDisposer(enemyRepository, world);
+            var enemySpawner = new EnemySpawner(enemySpawnTimer, enemyRepository, world, this);
             var scoreHandler = new ScoreHandler(scoreTimer, player, aScore);
-            var playerHandler = new PlayerMover(player, playerPictureBox, this, movementTimer);
-            var enemyDisposer = new EnemyDisposer(movementTimer, enemyRepository, this);
                 
-            new Game(enemySpawner, scoreHandler, playerHandler)
+            new Game(enemySpawner, scoreHandler)
                 .Start();
         }
     }
