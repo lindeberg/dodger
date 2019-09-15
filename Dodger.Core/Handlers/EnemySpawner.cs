@@ -12,7 +12,6 @@ namespace Dodger.Core.Handlers
     {
         private readonly IEnemyRepository _enemyRepository;
         private readonly IWorld _world;
-        public event EventHandler<SpawnedEnemyEventArgs> SpawnedEnemy;
 
         public EnemySpawner(IEnemyRepository enemyRepository, IWorld world)
         {
@@ -25,13 +24,21 @@ namespace Dodger.Core.Handlers
             if (!ShouldSpawn())
                 return;
 
-            var physicsComponent = new PhysicsComponent(CreateRandomPoint(), CreateRandomSize());
-            var movementComponenet = new MovementComponent(5, physicsComponent);
-            var enemy = new Enemy(movementComponenet, physicsComponent);
-
-            SpawnedEnemy?.Invoke(this, new SpawnedEnemyEventArgs(enemy));
+            var enemy = BuildEnemy();
 
             _enemyRepository.Add(enemy);
+        }
+
+        private Enemy BuildEnemy()
+        {
+            var physicsComponent = new PhysicsComponent(CreateRandomPoint(), CreateRandomSize());
+            var movementComponenet = new MovementComponent(CreateRandomMovementSpeed(), physicsComponent);
+            return new Enemy(movementComponenet, physicsComponent);
+        }
+
+        private int CreateRandomMovementSpeed()
+        {
+            return new Random().Next(1, 5);
         }
 
         private static bool ShouldSpawn()
@@ -59,15 +66,5 @@ namespace Dodger.Core.Handlers
 
             return new ValueObjects.Size(x, y);
         }
-    }
-
-    public class SpawnedEnemyEventArgs
-    {
-        public SpawnedEnemyEventArgs(Enemy enemy)
-        {
-            Enemy = enemy ?? throw new ArgumentNullException(nameof(enemy));
-        }
-
-        public Enemy Enemy { get; }
     }
 }
