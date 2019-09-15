@@ -72,7 +72,6 @@
     <Compile Include="ValueObjects\Direction.cs" />
     <Compile Include="ValueObjects\Point.cs" />
     <Compile Include="ValueObjects\Size.cs" />
-    <Compile Include="ValueObjects\TimeInterval.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
