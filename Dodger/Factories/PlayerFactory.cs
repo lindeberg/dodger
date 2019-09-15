@@ -8,23 +8,15 @@ namespace Dodger.Factories
 {
     public class PlayerFactory
     {
-        public static Player CreatePlayer(PictureBox pictureBox, MainForm form)
+        public static Player CreatePlayer(PictureBox pictureBox)
         {
             var location = new Point(pictureBox.Location.X, pictureBox.Location.Y);
             var size = new Size(pictureBox.Size.Width, pictureBox.Size.Height);
             
             var physicsComponent = new PhysicsComponent(location, size);
             var movementComponent = new MovementComponent(5, physicsComponent);
-            var graphicsComponent = new GraphicsComponent
-            {
-                PictureBox = pictureBox
-            };
             
-            var player = new Player(physicsComponent, movementComponent, graphicsComponent);
-
-            var inputComponent = new InputComponent(form, player);
-
-            player.InputComponent = inputComponent;
+            var player = new Player(physicsComponent, movementComponent);
 
             return player;
         }

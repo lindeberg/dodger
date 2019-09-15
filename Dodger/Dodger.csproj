@@ -50,49 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Entities\Components\GraphicsComponent\GraphicsComponent.cs" />
-    <Compile Include="Core\Entities\Components\GraphicsComponent\IGraphicsComponent.cs" />
-    <Compile Include="Core\Entities\Components\InputComponent\IInputComponent.cs" />
-    <Compile Include="Core\Entities\Components\InputComponent\InputComponent.cs" />
-    <Compile Include="Core\Entities\Components\MovementComponent\IMovementComponent.cs" />
-    <Compile Include="Core\Entities\Components\MovementComponent\MovementComponent.cs" />
-    <Compile Include="Core\Entities\Components\PhysicsComponent\IPhysicsComponent.cs" />
-    <Compile Include="Core\Entities\Components\PhysicsComponent\PhysicsComponent.cs" />
-    <Compile Include="Core\Entities\Enemy\Components\GraphicsComponent.cs" />
-    <Compile Include="Core\Entities\Enemy\Components\InputComponent.cs" />
-    <Compile Include="Core\Entities\Enemy\Components\MovementComponent.cs" />
-    <Compile Include="Core\Entities\Enemy\Enemy.cs" />
-    <Compile Include="Core\Entities\Game\Game.cs" />
-    <Compile Include="Core\Entities\IInteractingGameObject.cs" />
-    <Compile Include="Core\Entities\Player\Components\GraphicsComponent.cs" />
-    <Compile Include="Core\Entities\Player\Components\InputComponent.cs" />
-    <Compile Include="Core\Entities\Player\Components\MovementComponent.cs" />
-    <Compile Include="Core\Entities\Player\IPlayer.cs" />
-    <Compile Include="Core\Entities\Player\Player.cs" />
-    <Compile Include="Core\Entities\Score.cs" />
-    <Compile Include="Core\Entities\World\IWorld.cs" />
-    <Compile Include="Core\Entities\World\World.cs" />
-    <Compile Include="Core\Handlers\EnemyDisposer.cs" />
-    <Compile Include="Core\Handlers\EnemySpawner.cs" />
-    <Compile Include="Core\Handlers\IEnemyDisposer.cs" />
-    <Compile Include="Core\Handlers\IEnemySpawner.cs" />
-    <Compile Include="Core\Handlers\IScoreHandler.cs" />
-    <Compile Include="Core\Handlers\ScoreHandler.cs" />
-    <Compile Include="Core\Repositories\EnemyRepository\IEnemyRepository.cs" />
-    <Compile Include="Core\Repositories\EnemyRepository\RemovedEventArgs.cs" />
-    <Compile Include="Core\ValueObjects\Direction.cs" />
-    <Compile Include="Core\ValueObjects\Point.cs" />
-    <Compile Include="Core\ValueObjects\Size.cs" />
-    <Compile Include="Core\ValueObjects\TimeInterval.cs" />
     <Compile Include="Factories\PlayerFactory.cs" />
     <Compile Include="Graphics\Controls\Enemy\EnemyPictureBox.cs" />
     <Compile Include="Graphics\Controls\PictureBox.cs" />
     <Compile Include="Graphics\Controls\Player\PlayerPictureBox.cs" />
     <Compile Include="Graphics\Handlers\EnemyDisposer.cs" />
+    <Compile Include="Graphics\Handlers\EnemyRenderer.cs" />
     <Compile Include="Graphics\Handlers\EnemySpawner.cs" />
-    <Compile Include="Graphics\Handlers\IEnemyDisposer.cs" />
-    <Compile Include="Graphics\Handlers\IEnemySpawner.cs" />
-    <Compile Include="Graphics\Handlers\IScoreHandler.cs" />
+    <Compile Include="Graphics\Handlers\InputHandler.cs" />
+    <Compile Include="Graphics\Handlers\PlayerRenderer.cs" />
     <Compile Include="Graphics\Handlers\ScoreHandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -100,7 +66,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Persistance\Repositories\EnemyRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

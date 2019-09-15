@@ -38,7 +38,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Components\MovementComponent\IMovementComponent.cs" />
+    <Compile Include="Entities\Components\MovementComponent\MovementComponent.cs" />
+    <Compile Include="Entities\Components\PhysicsComponent\IPhysicsComponent.cs" />
+    <Compile Include="Entities\Components\PhysicsComponent\PhysicsComponent.cs" />
+    <Compile Include="Entities\Enemy\Components\MovementComponent.cs" />
+    <Compile Include="Entities\Enemy\Enemy.cs" />
+    <Compile Include="Entities\Game\Game.cs" />
+    <Compile Include="Entities\IInteractingGameObject.cs" />
+    <Compile Include="Entities\Player\Components\MovementComponent.cs" />
+    <Compile Include="Entities\Player\IPlayer.cs" />
+    <Compile Include="Entities\Player\Player.cs" />
+    <Compile Include="Entities\Score.cs" />
+    <Compile Include="Entities\Timer.cs" />
+    <Compile Include="Entities\World\IWorld.cs" />
+    <Compile Include="Entities\World\World.cs" />
+    <Compile Include="Graphics\Handlers\IEnemyDisposer.cs" />
+    <Compile Include="Graphics\Handlers\IEnemyRenderer.cs" />
+    <Compile Include="Graphics\Handlers\IEnemySpawner.cs" />
+    <Compile Include="Graphics\Handlers\IInputHandler.cs" />
+    <Compile Include="Graphics\Handlers\IPlayerRenderer.cs" />
+    <Compile Include="Graphics\Handlers\IScoreHandler.cs" />
+    <Compile Include="Handlers\EnemyDisposer.cs" />
+    <Compile Include="Handlers\EnemySpawner.cs" />
+    <Compile Include="Handlers\IEnemyDisposer.cs" />
+    <Compile Include="Handlers\IEnemySpawner.cs" />
+    <Compile Include="Handlers\IScoreHandler.cs" />
+    <Compile Include="Handlers\ScoreHandler.cs" />
+    <Compile Include="Persistance\Repositories\EnemyRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EnemyRepository\IEnemyRepository.cs" />
+    <Compile Include="Repositories\EnemyRepository\RemovedEventArgs.cs" />
+    <Compile Include="ValueObjects\Direction.cs" />
+    <Compile Include="ValueObjects\Point.cs" />
+    <Compile Include="ValueObjects\Size.cs" />
+    <Compile Include="ValueObjects\TimeInterval.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

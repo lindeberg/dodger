@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Dodger.Core.Entities.Enemy;
+using Dodger.Core.Graphics.Handlers;
 using Dodger.Core.Repositories.EnemyRepository;
 using Dodger.Graphics.Controls.Enemy;
 

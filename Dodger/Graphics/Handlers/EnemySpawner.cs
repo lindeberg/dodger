@@ -1,16 +1,19 @@
 using System;
+using Dodger.Core.Graphics.Handlers;
+using Dodger.Core.Persistance.Repositories;
+using Dodger.Core.Repositories.EnemyRepository;
 using Dodger.Graphics.Controls.Enemy;
 
 namespace Dodger.Graphics.Handlers
 {
     public class EnemySpawner : IEnemySpawner
     {
-        private readonly Core.Handlers.IEnemySpawner _enemySpawner;
+        private readonly IEnemyRepository _enemyRepository;
         private readonly MainForm _form;
 
-        public EnemySpawner(Core.Handlers.IEnemySpawner enemySpawner, MainForm form)
+        public EnemySpawner(IEnemyRepository enemyRepository, MainForm form)
         {
-            _enemySpawner = enemySpawner ?? throw new ArgumentNullException(nameof(enemySpawner));
+            _enemyRepository = enemyRepository ?? throw new ArgumentNullException(nameof(enemyRepository));
             _form = form ?? throw new ArgumentNullException(nameof(form));
 
             ConfigureEventHandlers();
@@ -18,10 +21,10 @@ namespace Dodger.Graphics.Handlers
 
         private void ConfigureEventHandlers()
         {
-            _enemySpawner.SpawnedEnemy += (sender, e) => SpawnEnemy(e);
+            _enemyRepository.Added += (sender, e) => SpawnEnemy(e);
         }
         
-        public void SpawnEnemy(Core.Handlers.SpawnedEnemyEventArgs eventArgs)
+        public void SpawnEnemy(AddedEventArgs eventArgs)
         {
             var enemy = eventArgs.Enemy;
             
@@ -29,8 +32,6 @@ namespace Dodger.Graphics.Handlers
                 enemy.PhysicsComponent.Location,
                 "missile.png");
 
-            enemy.GraphicsComponent.PictureBox = pictureBox;
-            
             _form.Controls.Add(pictureBox);
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using Dodger.Core.Entities.Player;
+using Dodger.Core.Graphics.Handlers;
 
 namespace Dodger.Graphics.Handlers
 {
