@@ -1,9 +1,9 @@
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 using Dodger.Core.Entities.Player;
 using Dodger.Core.Graphics.Handlers;
-using Dodger.Graphics.Controls.Player;
 
 namespace Dodger.Graphics.Handlers
 {
@@ -29,8 +29,8 @@ namespace Dodger.Graphics.Handlers
 
             var pictureBox = _form
                 .Controls
-                .OfType<PlayerPictureBox>()
-                .SingleOrDefault();
+                .OfType<PictureBox>()
+                .SingleOrDefault(x => x.Name == "playerPictureBox");
             
             if(pictureBox == null)
                 return;

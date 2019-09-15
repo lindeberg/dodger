@@ -12,7 +12,6 @@ namespace Dodger.Core.Handlers
     {
         private readonly IEnemyRepository _enemyRepository;
         private readonly IWorld _world;
-
         public event EventHandler<SpawnedEnemyEventArgs> SpawnedEnemy;
 
         public EnemySpawner(IEnemyRepository enemyRepository, IWorld world)
@@ -23,9 +22,7 @@ namespace Dodger.Core.Handlers
 
         public void SpawnEnemy()
         {
-            var random = new Random();
-            var s = random.Next(0, 1000);
-            if (s > 200)
+            if (!ShouldSpawn())
                 return;
 
             var physicsComponent = new PhysicsComponent(CreateRandomPoint(), CreateRandomSize());
@@ -35,6 +32,13 @@ namespace Dodger.Core.Handlers
             SpawnedEnemy?.Invoke(this, new SpawnedEnemyEventArgs(enemy));
 
             _enemyRepository.Add(enemy);
+        }
+
+        private static bool ShouldSpawn()
+        {
+            var random = new Random();
+            var value = random.Next(0, 1000);
+            return value > 800;
         }
 
         private Point CreateRandomPoint()

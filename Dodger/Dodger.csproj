@@ -53,7 +53,6 @@
     <Compile Include="Factories\PlayerFactory.cs" />
     <Compile Include="Graphics\Controls\Enemy\EnemyPictureBox.cs" />
     <Compile Include="Graphics\Controls\PictureBox.cs" />
-    <Compile Include="Graphics\Controls\Player\PlayerPictureBox.cs" />
     <Compile Include="Graphics\Handlers\EnemyDisposer.cs" />
     <Compile Include="Graphics\Handlers\EnemyRenderer.cs" />
     <Compile Include="Graphics\Handlers\EnemySpawner.cs" />
