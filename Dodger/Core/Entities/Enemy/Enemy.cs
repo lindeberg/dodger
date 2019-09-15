@@ -7,7 +7,7 @@ using Dodger.Core.ValueObjects;
 
 namespace Dodger.Core.Entities.Enemy
 {
-    public class Enemy : IGameObject
+    public class Enemy 
     {
         public Enemy(IMovementComponent movementComponent, IPhysicsComponent physicsComponent, IGraphicsComponent graphicsComponent)
         {

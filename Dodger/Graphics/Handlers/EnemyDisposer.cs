@@ -1,30 +1,32 @@
 using System;
 using System.Linq;
 using Dodger.Core.Entities.Enemy;
-using Dodger.Core.Entities.Enemy.Controls;
 using Dodger.Core.Repositories.EnemyRepository;
+using Dodger.Graphics.Controls.Enemy;
 
-namespace Dodger.Handlers
+namespace Dodger.Graphics.Handlers
 {
-    public class EnemyGraphicsDisposer
+    public class EnemyDisposer : IEnemyDisposer
     {
-        private readonly IEnemyRepository _repository;
+        private readonly IEnemyRepository _enemyRepository;
         private readonly MainForm _form;
 
-        public EnemyGraphicsDisposer(IEnemyRepository repository, MainForm form)
+        public EnemyDisposer(IEnemyRepository enemyRepository, MainForm form)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _enemyRepository = enemyRepository ?? throw new ArgumentNullException(nameof(enemyRepository));
             _form = form ?? throw new ArgumentNullException(nameof(form));
             ConfigureEventHandlers();
         }
 
         private void ConfigureEventHandlers()
         {
-            _repository.Removed += (sender, e) => RemovePictureBox(e.Enemy);
+            _enemyRepository.Removed += (sender, e) => DisposeEnemy(e.Enemy);
         }
 
-        private void RemovePictureBox(Enemy enemy)
+        public void DisposeEnemy(Enemy enemy)
         {
+            if (enemy == null) throw new ArgumentNullException(nameof(enemy));
+            
             var pictureBox = _form.Controls
                 .OfType<EnemyPictureBox>()
                 .SingleOrDefault(x => x.Tag.ToString() == enemy.Id.ToString());

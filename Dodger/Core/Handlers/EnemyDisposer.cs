@@ -1,13 +1,10 @@
 using System;
-using Dodger.Controls;
-using Dodger.Core.Entities;
+using System.Linq;
 using Dodger.Core.Entities.Enemy;
 using Dodger.Core.Entities.World;
-using Dodger.Core.Handlers;
 using Dodger.Core.Repositories.EnemyRepository;
-using Dodger.Core.ValueObjects;
 
-namespace Dodger.Handlers
+namespace Dodger.Core.Handlers
 {
     public class EnemyDisposer : IEnemyDisposer
     {
@@ -20,9 +17,21 @@ namespace Dodger.Handlers
             _world = world ?? throw new ArgumentNullException(nameof(world));
         }
 
+        public void DisposeEnemies()
+        {
+            var enumerable = _enemyRepository.GetAll().ToList();
+            
+            foreach (var enemy in enumerable)
+            {
+                DisposeEnemy(enemy);
+            }
+        }
+
         public void DisposeEnemy(Enemy enemy)
         {
-            if (enemy.PhysicsComponent.Location.IsWithinDimensions(_world.Size, enemy.PhysicsComponent.Size)) 
+            if (enemy == null) throw new ArgumentNullException(nameof(enemy));
+
+            if (enemy.PhysicsComponent.Location.IsWithinDimensions(_world.Size, enemy.PhysicsComponent.Size))
                 return;
 
             _enemyRepository.Remove(enemy);

@@ -31,7 +31,7 @@
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources =
         new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-      this.aScore = new System.Windows.Forms.Label();
+      this.scoreLabel = new System.Windows.Forms.Label();
       this.aScoreLabel = new System.Windows.Forms.Label();
       this.enemySpawnTimer = new System.Windows.Forms.Timer(this.components);
       this.playerPictureBox = new System.Windows.Forms.PictureBox();
@@ -40,19 +40,19 @@
       ((System.ComponentModel.ISupportInitialize) (this.playerPictureBox)).BeginInit();
       this.SuspendLayout();
       // 
-      // aScore
+      // scoreLabel
       // 
-      this.aScore.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.aScore.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-      this.aScore.Location = new System.Drawing.Point(102, 22);
-      this.aScore.Name = "aScore";
-      this.aScore.Size = new System.Drawing.Size(27, 35);
-      this.aScore.TabIndex = 1;
-      this.aScore.Text = "0";
+      this.scoreLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.scoreLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+      this.scoreLabel.Location = new System.Drawing.Point(102, 21);
+      this.scoreLabel.Name = "scoreLabel";
+      this.scoreLabel.Size = new System.Drawing.Size(27, 35);
+      this.scoreLabel.TabIndex = 1;
+      this.scoreLabel.Text = "0";
       // 
       // aScoreLabel
       // 
-      this.aScoreLabel.Location = new System.Drawing.Point(28, 22);
+      this.aScoreLabel.Location = new System.Drawing.Point(28, 21);
       this.aScoreLabel.Name = "aScoreLabel";
       this.aScoreLabel.Size = new System.Drawing.Size(67, 31);
       this.aScoreLabel.TabIndex = 2;
@@ -68,7 +68,7 @@
       this.playerPictureBox.Location = new System.Drawing.Point(342, 412);
       this.playerPictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.playerPictureBox.Name = "playerPictureBox";
-      this.playerPictureBox.Size = new System.Drawing.Size(28, 28);
+      this.playerPictureBox.Size = new System.Drawing.Size(28, 29);
       this.playerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
       this.playerPictureBox.TabIndex = 3;
       this.playerPictureBox.TabStop = false;
@@ -91,9 +91,11 @@
       this.ClientSize = new System.Drawing.Size(1080, 619);
       this.Controls.Add(this.playerPictureBox);
       this.Controls.Add(this.aScoreLabel);
-      this.Controls.Add(this.aScore);
+      this.Controls.Add(this.scoreLabel);
       this.Location = new System.Drawing.Point(22, 22);
-      this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+      this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+      this.MaximumSize = new System.Drawing.Size(1102, 675);
+      this.MinimumSize = new System.Drawing.Size(1102, 675);
       this.Name = "MainForm";
       ((System.ComponentModel.ISupportInitialize) (this.playerPictureBox)).EndInit();
       this.ResumeLayout(false);
@@ -101,12 +103,12 @@
 
     #endregion
 
-    private System.Windows.Forms.Label aScore;
     private System.Windows.Forms.Label aScoreLabel;
     private System.Windows.Forms.Timer enemySpawnTimer;
     private System.Windows.Forms.Timer scoreTimer;
     private System.Windows.Forms.PictureBox playerPictureBox;
     private System.Windows.Forms.Timer timer;
+    private System.Windows.Forms.Label scoreLabel;
   }
 }
 

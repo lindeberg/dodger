@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Autofac;
-using Dodger.Handlers;
-using Dodger.Infrastructure;
 
 namespace Dodger
 {

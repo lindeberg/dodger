@@ -12,6 +12,8 @@ namespace Dodger.Core.Entities.Components.GraphicsComponent
         
         public virtual void Update(IInteractingGameObject obj)
         {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            
             Move(obj);
         }
         

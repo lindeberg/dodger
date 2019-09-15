@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Dodger.Core.Entities;
 using Dodger.Core.Entities.Enemy;
 using Dodger.Core.Repositories.EnemyRepository;
 

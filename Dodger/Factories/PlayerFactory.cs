@@ -1,9 +1,7 @@
 using System.Windows.Forms;
-using Dodger.Core.Entities;
 using Dodger.Core.Entities.Components.PhysicsComponent;
 using Dodger.Core.Entities.Player;
 using Dodger.Core.Entities.Player.Components;
-using Dodger.Core.Entities.Player.Controls;
 using Dodger.Core.ValueObjects;
 
 namespace Dodger.Factories
@@ -19,7 +17,7 @@ namespace Dodger.Factories
             var movementComponent = new MovementComponent(5, physicsComponent);
             var graphicsComponent = new GraphicsComponent
             {
-                PictureBox = new PlayerPictureBox("player", size, location, "player.png")
+                PictureBox = pictureBox
             };
             
             var player = new Player(physicsComponent, movementComponent, graphicsComponent);

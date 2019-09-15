@@ -1,7 +1,10 @@
+using System;
+
 namespace Dodger.Core.Handlers
 {
     public interface IEnemySpawner
     {
-        void StartSpawningEnemies();
+        event EventHandler<SpawnedEnemyEventArgs> SpawnedEnemy;
+        void SpawnEnemy();
     }
 }
