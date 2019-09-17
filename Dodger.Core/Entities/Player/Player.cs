@@ -1,7 +1,10 @@
 using System;
+using Dodger.Core.Entities.Components.Health;
 using Dodger.Core.Entities.Components.MovementComponent;
 using Dodger.Core.Entities.Components.PhysicsComponent;
+using Dodger.Core.Entities.Components.Score;
 using Dodger.Core.Entities.World;
+using Dodger.Core.ValueObjects;
 
 namespace Dodger.Core.Entities.Player
 {
@@ -19,6 +22,7 @@ namespace Dodger.Core.Entities.Player
         }
 
         public Score Score { get; set; } = new Score();
+        public Health Health { get; set; } = new Health(5);
         public IPhysicsComponent PhysicsComponent { get; }
         public IMovementComponent MovementComponent { get; }
     }

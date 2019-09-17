@@ -1,6 +1,6 @@
 using Dodger.Core.Entities.Player;
 
-namespace Dodger.Core.Graphics.Handlers
+namespace Dodger.Core.Graphics.Renderers
 {
     public interface IPlayerRenderer
     {

@@ -2,10 +2,10 @@ using System;
 using System.Drawing;
 using System.Linq;
 using Dodger.Core.Entities.Enemy;
-using Dodger.Core.Graphics.Handlers;
+using Dodger.Core.Graphics.Renderers;
 using Dodger.Graphics.Controls.Enemy;
 
-namespace Dodger.Graphics.Handlers
+namespace Dodger.Graphics.Renderers
 {
     public class EnemyRenderer : IEnemyRenderer
     {
@@ -20,21 +20,19 @@ namespace Dodger.Graphics.Handlers
         {
             if (enemy == null) throw new ArgumentNullException(nameof(enemy));
             
-            SetLocation(enemy);
-        }
-
-        private void SetLocation(Enemy enemy)
-        {
-            if (enemy == null) throw new ArgumentNullException(nameof(enemy));
-            
             var pictureBox = _form
                 .Controls
                 .OfType<EnemyPictureBox>()
-                .SingleOrDefault(x => x.Tag.ToString() == enemy.Id.ToString());
-            
-            if(pictureBox == null)
-                return;
-            
+                .Single(x => x.Tag.ToString() == enemy.Id.ToString());
+
+            SetLocation(enemy, pictureBox);
+        }
+
+        private void SetLocation(Enemy enemy, EnemyPictureBox pictureBox)
+        {
+            if (enemy == null) throw new ArgumentNullException(nameof(enemy));
+            if (pictureBox == null) throw new ArgumentNullException(nameof(pictureBox));
+
             pictureBox.Location = new Point(enemy.PhysicsComponent.Location.X, enemy.PhysicsComponent.Location.Y);
         }
     }

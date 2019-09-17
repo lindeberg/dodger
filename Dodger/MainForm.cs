@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Dodger.Core.Entities.Game;
 using Dodger.Core.Entities.Player;
 using Dodger.Core.Entities.World;
@@ -7,6 +8,7 @@ using Dodger.Core.Repositories.EnemyRepository;
 using Dodger.Core.ValueObjects;
 using Dodger.Factories;
 using Dodger.Graphics.Handlers;
+using Dodger.Graphics.Renderers;
 using EnemyDisposer = Dodger.Core.Handlers.EnemyDisposer;
 using EnemySpawner = Dodger.Core.Handlers.EnemySpawner;
 using ScoreHandler = Dodger.Core.Handlers.ScoreHandler;
@@ -50,13 +52,14 @@ namespace Dodger
         {
             var enemySpawner = new Graphics.Handlers.EnemySpawner(enemyRepository, this);
             var enemyDisposer = new Graphics.Handlers.EnemyDisposer(enemyRepository, this);
-            var scoreHandler = new Graphics.Handlers.ScoreHandler(player, scoreLabel);
+            var scoreHandler = new ScoreRenderer(scoreValueLabel);
             var playerRenderer = new PlayerRenderer(this);
             var enemyRenderer = new EnemyRenderer(this);
             var inputHandler = new InputHandler(player, this);
+            var healthRenderer = new HealthRenderer(healthValueLabel);
 
             return new GameGraphicsComponents(enemySpawner, enemyDisposer, scoreHandler, enemyRenderer, playerRenderer,
-                inputHandler);
+                inputHandler, healthRenderer);
         }
 
         private GameComponents BuildGameComponents(IWorld world, IPlayer player, IEnemyRepository enemyRepository)
@@ -67,5 +70,6 @@ namespace Dodger
 
             return new GameComponents(enemySpawner, enemyDisposer, scoreHandler, world, player, enemyRepository);
         }
+
     }
 }

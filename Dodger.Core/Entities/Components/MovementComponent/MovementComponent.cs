@@ -5,7 +5,7 @@ using Dodger.Core.ValueObjects;
 
 namespace Dodger.Core.Entities.Components.MovementComponent
 {
-    public abstract  class MovementComponent : IMovementComponent
+    public abstract class MovementComponent : IMovementComponent
     {
         private readonly IPhysicsComponent _physicsComponent;
 
@@ -14,7 +14,7 @@ namespace Dodger.Core.Entities.Components.MovementComponent
             _physicsComponent = physicsComponent ?? throw new ArgumentNullException(nameof(physicsComponent));
             MovementSpeed = movementSpeed;
         }
-        
+
         public void Move(IWorld world)
         {
             Point newLocation;
@@ -55,7 +55,7 @@ namespace Dodger.Core.Entities.Components.MovementComponent
         {
             Move(world);
         }
-        
+
         public int MovementSpeed { get; set; }
         public Direction? CurrentDirection { get; private set; }
     }

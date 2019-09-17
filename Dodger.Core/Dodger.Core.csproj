@@ -38,10 +38,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Components\Health\Health.cs" />
     <Compile Include="Entities\Components\MovementComponent\IMovementComponent.cs" />
     <Compile Include="Entities\Components\MovementComponent\MovementComponent.cs" />
     <Compile Include="Entities\Components\PhysicsComponent\IPhysicsComponent.cs" />
     <Compile Include="Entities\Components\PhysicsComponent\PhysicsComponent.cs" />
+    <Compile Include="Entities\Components\Score\Score.cs" />
     <Compile Include="Entities\Enemy\Components\MovementComponent.cs" />
     <Compile Include="Entities\Enemy\Enemy.cs" />
     <Compile Include="Entities\Game\Game.cs" />
@@ -49,16 +51,16 @@
     <Compile Include="Entities\Player\Components\MovementComponent.cs" />
     <Compile Include="Entities\Player\IPlayer.cs" />
     <Compile Include="Entities\Player\Player.cs" />
-    <Compile Include="Entities\Score.cs" />
     <Compile Include="Entities\Timer.cs" />
     <Compile Include="Entities\World\IWorld.cs" />
     <Compile Include="Entities\World\World.cs" />
     <Compile Include="Graphics\Handlers\IEnemyDisposer.cs" />
-    <Compile Include="Graphics\Handlers\IEnemyRenderer.cs" />
     <Compile Include="Graphics\Handlers\IEnemySpawner.cs" />
     <Compile Include="Graphics\Handlers\IInputHandler.cs" />
-    <Compile Include="Graphics\Handlers\IPlayerRenderer.cs" />
-    <Compile Include="Graphics\Handlers\IScoreHandler.cs" />
+    <Compile Include="Graphics\Renderers\IEnemyRenderer.cs" />
+    <Compile Include="Graphics\Renderers\IHealthRenderer.cs" />
+    <Compile Include="Graphics\Renderers\IPlayerRenderer.cs" />
+    <Compile Include="Graphics\Renderers\IScoreRenderer.cs" />
     <Compile Include="Handlers\EnemyDisposer.cs" />
     <Compile Include="Handlers\EnemySpawner.cs" />
     <Compile Include="Handlers\IEnemyDisposer.cs" />

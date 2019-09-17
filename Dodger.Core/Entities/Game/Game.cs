@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using Dodger.Core.Entities.Player;
 using Dodger.Core.Entities.World;
 using Dodger.Core.Graphics.Handlers;
+using Dodger.Core.Graphics.Renderers;
 using Dodger.Core.Repositories.EnemyRepository;
 using IEnemyDisposer = Dodger.Core.Handlers.IEnemyDisposer;
 using IEnemySpawner = Dodger.Core.Handlers.IEnemySpawner;
@@ -14,6 +16,7 @@ namespace Dodger.Core.Entities.Game
         private readonly Timer _timer;
         private readonly GameComponents _components;
         private readonly GameGraphicsComponents _graphicsComponents;
+        private bool _isPlaying = true;
 
         public Game(Timer timer, GameComponents components, GameGraphicsComponents graphicsComponents)
         {
@@ -24,16 +27,66 @@ namespace Dodger.Core.Entities.Game
 
         public void Start()
         {
-            _timer.Tick += (sender, e) => Update();
+            _timer.Tick += (sender, e) => Iteration();
         }
 
-        private void Update()
+        private void Iteration()
         {
+            if (!_components.Player.Health.IsAlive)
+                return;
+
             UpdatePlayer();
+            AddScore();
             UpdateEnemies();
+            CheckForCollisions();
             SpawnEnemy();
             DisposeEnemies();
-            AddScore();
+            Render();
+        }
+
+        private void Render()
+        {
+            RenderHealth();
+            RenderPoints();
+            RenderPlayer();
+            RenderEnemies();
+        }
+
+        private void RenderPlayer()
+        {
+            _graphicsComponents.PlayerRenderer.Render(_components.Player);
+        }
+
+        private void RenderEnemies()
+        {
+            foreach (var enemy in _components.EnemyRepository.GetAll().ToList())
+            {
+                _graphicsComponents.EnemyRenderer.Render(enemy);
+            }
+        }
+
+        private void RenderPoints()
+        {
+            _graphicsComponents.ScoreRenderer.Render(_components.Player);
+        }
+
+        private void RenderHealth()
+        {
+            _graphicsComponents.HealthRenderer.Render(_components.Player);
+        }
+
+        private void CheckForCollisions()
+        {
+            var enemies = _components.EnemyRepository
+                .GetAll()
+                .Where(enemy => _components.Player.PhysicsComponent.IsCollidingWith(enemy.PhysicsComponent))
+                .ToList();
+
+            foreach (var enemy in enemies)
+            {
+                _components.Player.Health.LosePoint();
+                _components.EnemyRepository.Remove(enemy);
+            }
         }
 
         private void AddScore()
@@ -54,7 +107,6 @@ namespace Dodger.Core.Entities.Game
         private void UpdatePlayer()
         {
             _components.Player.Update(_components.World);
-            _graphicsComponents.PlayerRenderer.Render(_components.Player);
         }
 
         private void UpdateEnemies()
@@ -62,7 +114,6 @@ namespace Dodger.Core.Entities.Game
             foreach (var enemy in _components.EnemyRepository.GetAll())
             {
                 enemy.Update(_components.World);
-                _graphicsComponents.EnemyRenderer.Render(enemy);
             }
         }
     }
@@ -93,22 +144,24 @@ namespace Dodger.Core.Entities.Game
     {
         public GameGraphicsComponents(Graphics.Handlers.IEnemySpawner enemySpawner,
             Graphics.Handlers.IEnemyDisposer enemyDisposer,
-            Graphics.Handlers.IScoreHandler scoreHandler, IEnemyRenderer enemyRenderer, IPlayerRenderer playerRenderer,
-            IInputHandler inputHandler)
+            IScoreRenderer scoreRenderer, IEnemyRenderer enemyRenderer, IPlayerRenderer playerRenderer,
+            IInputHandler inputHandler, IHealthRenderer healthRenderer)
         {
             EnemySpawner = enemySpawner ?? throw new ArgumentNullException(nameof(enemySpawner));
             EnemyDisposer = enemyDisposer ?? throw new ArgumentNullException(nameof(enemyDisposer));
-            ScoreHandler = scoreHandler ?? throw new ArgumentNullException(nameof(scoreHandler));
+            ScoreRenderer = scoreRenderer ?? throw new ArgumentNullException(nameof(scoreRenderer));
             EnemyRenderer = enemyRenderer ?? throw new ArgumentNullException(nameof(enemyRenderer));
             PlayerRenderer = playerRenderer ?? throw new ArgumentNullException(nameof(playerRenderer));
             InputHandler = inputHandler ?? throw new ArgumentNullException(nameof(inputHandler));
+            HealthRenderer = healthRenderer ?? throw new ArgumentNullException(nameof(healthRenderer));
         }
 
         public Graphics.Handlers.IEnemySpawner EnemySpawner { get; set; }
         public Graphics.Handlers.IEnemyDisposer EnemyDisposer { get; set; }
-        public Graphics.Handlers.IScoreHandler ScoreHandler { get; set; }
+        public IScoreRenderer ScoreRenderer { get; set; }
         public IEnemyRenderer EnemyRenderer { get; set; }
         public IPlayerRenderer PlayerRenderer { get; set; }
         public IInputHandler InputHandler { get; set; }
+        public IHealthRenderer HealthRenderer { get; set; }
     }
 }

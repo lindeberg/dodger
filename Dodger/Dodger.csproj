@@ -54,11 +54,12 @@
     <Compile Include="Graphics\Controls\Enemy\EnemyPictureBox.cs" />
     <Compile Include="Graphics\Controls\PictureBox.cs" />
     <Compile Include="Graphics\Handlers\EnemyDisposer.cs" />
-    <Compile Include="Graphics\Handlers\EnemyRenderer.cs" />
     <Compile Include="Graphics\Handlers\EnemySpawner.cs" />
     <Compile Include="Graphics\Handlers\InputHandler.cs" />
-    <Compile Include="Graphics\Handlers\PlayerRenderer.cs" />
-    <Compile Include="Graphics\Handlers\ScoreHandler.cs" />
+    <Compile Include="Graphics\Renderers\EnemyRenderer.cs" />
+    <Compile Include="Graphics\Renderers\HealthRenderer.cs" />
+    <Compile Include="Graphics\Renderers\PlayerRenderer.cs" />
+    <Compile Include="Graphics\Renderers\ScoreRenderer.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
