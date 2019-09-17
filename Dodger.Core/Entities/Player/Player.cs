@@ -4,7 +4,6 @@ using Dodger.Core.Entities.Components.MovementComponent;
 using Dodger.Core.Entities.Components.PhysicsComponent;
 using Dodger.Core.Entities.Components.Score;
 using Dodger.Core.Entities.World;
-using Dodger.Core.ValueObjects;
 
 namespace Dodger.Core.Entities.Player
 {

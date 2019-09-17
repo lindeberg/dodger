@@ -15,13 +15,12 @@ namespace Dodger.MonoGame.Factories
         {
             var enemyRepository = new EnemyRepository();
             var gameComponents = BuildGameComponents(world, player, enemyRepository);
-            var gameGraphicsComponents = BuildGameGraphicsComponents(enemyRepository, player, gameWindow, spriteBatch);
+            var gameGraphicsComponents = BuildGameGraphicsComponents(enemyRepository, player, spriteBatch);
 
             return new Game(gameComponents, gameGraphicsComponents);
         }
 
-        private GameGraphicsComponents BuildGameGraphicsComponents(IEnemyRepository enemyRepository, Player player,
-            GameWindow gameWindow, SpriteBatch spriteBatch)
+        private GameGraphicsComponents BuildGameGraphicsComponents(IEnemyRepository enemyRepository, Player player, SpriteBatch spriteBatch)
         {
             var scoreRenderer = new ScoreRenderer(spriteBatch);
             var playerRenderer = new PlayerRenderer();

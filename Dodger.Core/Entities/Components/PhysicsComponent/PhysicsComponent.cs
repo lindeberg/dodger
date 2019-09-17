@@ -1,4 +1,3 @@
-using System;
 using Dodger.Core.ValueObjects;
 
 namespace Dodger.Core.Entities.Components.PhysicsComponent

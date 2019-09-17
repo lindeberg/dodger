@@ -36,6 +36,6 @@ namespace Dodger.Core.Persistance.Repositories.EnemyRepository
             Enemy = enemy ?? throw new ArgumentNullException(nameof(enemy));
         }
 
-        public Enemy Enemy { get; set; }
+        public Enemy Enemy { get; }
     }
 }
