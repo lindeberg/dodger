@@ -29,24 +29,24 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      this.scoreValueLabel = new System.Windows.Forms.Label();
+      this.ScoreValueLabel = new System.Windows.Forms.Label();
       this.scoreLabel = new System.Windows.Forms.Label();
       this.enemySpawnTimer = new System.Windows.Forms.Timer(this.components);
       this.scoreTimer = new System.Windows.Forms.Timer(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
       this.label1 = new System.Windows.Forms.Label();
-      this.healthValueLabel = new System.Windows.Forms.Label();
+      this.HealthValueLabel = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // scoreValueLabel
       // 
-      this.scoreValueLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.scoreValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-      this.scoreValueLabel.Location = new System.Drawing.Point(102, 21);
-      this.scoreValueLabel.Name = "scoreValueLabel";
-      this.scoreValueLabel.Size = new System.Drawing.Size(57, 35);
-      this.scoreValueLabel.TabIndex = 1;
-      this.scoreValueLabel.Text = "0";
+      this.ScoreValueLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.ScoreValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+      this.ScoreValueLabel.Location = new System.Drawing.Point(102, 21);
+      this.ScoreValueLabel.Name = "ScoreValueLabel";
+      this.ScoreValueLabel.Size = new System.Drawing.Size(57, 35);
+      this.ScoreValueLabel.TabIndex = 1;
+      this.ScoreValueLabel.Text = "0";
       // 
       // scoreLabel
       // 
@@ -80,12 +80,12 @@
       // 
       // healthValueLabel
       // 
-      this.healthValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-      this.healthValueLabel.Location = new System.Drawing.Point(102, 52);
-      this.healthValueLabel.Name = "healthValueLabel";
-      this.healthValueLabel.Size = new System.Drawing.Size(27, 27);
-      this.healthValueLabel.TabIndex = 5;
-      this.healthValueLabel.Text = "5";
+      this.HealthValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+      this.HealthValueLabel.Location = new System.Drawing.Point(102, 52);
+      this.HealthValueLabel.Name = "HealthValueLabel";
+      this.HealthValueLabel.Size = new System.Drawing.Size(27, 27);
+      this.HealthValueLabel.TabIndex = 5;
+      this.HealthValueLabel.Text = "5";
       // 
       // MainForm
       // 
@@ -93,10 +93,10 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.Control;
       this.ClientSize = new System.Drawing.Size(1080, 619);
-      this.Controls.Add(this.healthValueLabel);
+      this.Controls.Add(this.HealthValueLabel);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.scoreLabel);
-      this.Controls.Add(this.scoreValueLabel);
+      this.Controls.Add(this.ScoreValueLabel);
       this.Location = new System.Drawing.Point(22, 22);
       this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
       this.MaximumSize = new System.Drawing.Size(1102, 675);
@@ -111,9 +111,9 @@
     private System.Windows.Forms.Timer scoreTimer;
     private System.Windows.Forms.Timer timer;
     private System.Windows.Forms.Label scoreLabel;
-    private System.Windows.Forms.Label scoreValueLabel;
+    public System.Windows.Forms.Label ScoreValueLabel;
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.Label healthValueLabel;
+    public System.Windows.Forms.Label HealthValueLabel;
   }
 }
 

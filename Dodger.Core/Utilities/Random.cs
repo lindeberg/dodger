@@ -1,4 +1,4 @@
-namespace Dodger.Core.Helpers
+namespace Dodger.Core.Utilities
 {
     public static class Random
     {

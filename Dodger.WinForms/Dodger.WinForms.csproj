@@ -53,6 +53,7 @@
     <Compile Include="Controls\Enemy\EnemyPictureBox.cs" />
     <Compile Include="Controls\PictureBox.cs" />
     <Compile Include="Controls\Player\PlayerPictureBox.cs" />
+    <Compile Include="Factories\GameFactory.cs" />
     <Compile Include="Handlers\InputHandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

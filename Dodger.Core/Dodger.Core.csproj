@@ -51,7 +51,6 @@
     <Compile Include="Entities\Player\Components\MovementComponent.cs" />
     <Compile Include="Entities\Player\IPlayer.cs" />
     <Compile Include="Entities\Player\Player.cs" />
-    <Compile Include="Entities\Timer.cs" />
     <Compile Include="Entities\World\IWorld.cs" />
     <Compile Include="Entities\World\World.cs" />
     <Compile Include="Factories\PlayerFactory.cs" />
@@ -66,7 +65,7 @@
     <Compile Include="Handlers\IEnemySpawner.cs" />
     <Compile Include="Handlers\IScoreHandler.cs" />
     <Compile Include="Handlers\ScoreHandler.cs" />
-    <Compile Include="Helpers\Random.cs" />
+    <Compile Include="Utilities\Random.cs" />
     <Compile Include="Persistance\Repositories\EnemyRepository\EnemyRepository.cs" />
     <Compile Include="Persistance\Repositories\EnemyRepository\IEnemyRepository.cs" />
     <Compile Include="Persistance\Repositories\EnemyRepository\RemovedEventArgs.cs" />

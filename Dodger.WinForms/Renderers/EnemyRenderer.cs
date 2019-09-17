@@ -22,6 +22,7 @@ namespace Dodger.WinForms.Renderers
 
         private void ConfigureEventHandlers()
         {
+            //TODO: Figure out how to remove event listening here
             _enemyRepository.Removed += (sender, e) => Remove(e.Enemy);
             _enemyRepository.Added += (sender, e) => Render(e.Enemy);
         }
@@ -46,9 +47,7 @@ namespace Dodger.WinForms.Renderers
         {
             if (enemy == null) throw new ArgumentNullException(nameof(enemy));
 
-            var pictureBox = _form.Controls
-                .OfType<EnemyPictureBox>()
-                .SingleOrDefault(x => x.Tag.ToString() == enemy.Id.ToString());
+            var pictureBox = GetPictureBox(enemy);
 
             if (pictureBox == null)
                 return;
@@ -58,6 +57,8 @@ namespace Dodger.WinForms.Renderers
         
         private EnemyPictureBox GetPictureBox(Enemy enemy)
         {
+            if (enemy == null) throw new ArgumentNullException(nameof(enemy));
+            
             return _form
                 .Controls
                 .OfType<EnemyPictureBox>()
@@ -66,6 +67,8 @@ namespace Dodger.WinForms.Renderers
 
         private void AddPictureBox(Enemy enemy)
         {
+            if (enemy == null) throw new ArgumentNullException(nameof(enemy));
+            
             var pictureBox = new EnemyPictureBox(enemy.Id, $"enemy-{enemy.Id}", enemy.PhysicsComponent.Size,
                 enemy.PhysicsComponent.Location,
                 "missile.png");

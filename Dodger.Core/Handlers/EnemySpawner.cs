@@ -5,6 +5,7 @@ using Dodger.Core.Entities.World;
 using Dodger.Core.Persistance.Repositories.EnemyRepository;
 using MovementComponent = Dodger.Core.Entities.Enemy.Components.MovementComponent;
 using Point = Dodger.Core.ValueObjects.Point;
+using Random = Dodger.Core.Utilities.Random;
 
 namespace Dodger.Core.Handlers
 {
@@ -38,18 +39,18 @@ namespace Dodger.Core.Handlers
 
         private int CreateRandomMovementSpeed()
         {
-            return Helpers.Random.Next(3, 6);
+            return Random.Next(3, 6);
         }
 
         private static bool ShouldSpawn()
         {
-            var value = Helpers.Random.Next(0, 1000);
+            var value = Random.Next(0, 1000);
             return value > 910;
         }
 
         private Point CreateRandomPoint()
         {
-            var x = Helpers.Random.Next(0, _world.Size.Width);
+            var x = Random.Next(0, _world.Size.Width);
 
             var point = new Point(x, 0);
 
@@ -58,8 +59,8 @@ namespace Dodger.Core.Handlers
 
         private static ValueObjects.Size CreateRandomSize()
         {
-            var x = Helpers.Random.Next(20, 50);
-            var y = Helpers.Random.Next(20, 50);
+            var x = Random.Next(20, 50);
+            var y = Random.Next(20, 50);
 
             return new ValueObjects.Size(x, y);
         }

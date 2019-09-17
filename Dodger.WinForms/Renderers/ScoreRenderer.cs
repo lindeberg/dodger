@@ -16,6 +16,8 @@ namespace Dodger.WinForms.Renderers
 
         public void Render(IPlayer player)
         {
+            if (player == null) throw new ArgumentNullException(nameof(player));
+            
             _scoreValueLabel.Text = player.Score.Points.ToString();
         }
     }

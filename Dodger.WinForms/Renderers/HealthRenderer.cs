@@ -15,6 +15,8 @@ namespace Dodger.WinForms.Renderers
         }
         public void Render(IPlayer player)
         {
+            if (player == null) throw new ArgumentNullException(nameof(player));
+            
             _healthValueLabel.Text = player.Health.Points.ToString();
         }
     }
