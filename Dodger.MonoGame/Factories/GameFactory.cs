@@ -1,4 +1,5 @@
 using Dodger.Core.Entities.Game;
+using Dodger.Core.Entities.Game.Components;
 using Dodger.Core.Entities.Player;
 using Dodger.Core.Entities.World;
 using Dodger.Core.Handlers;

@@ -1,13 +1,6 @@
 using System;
 using System.Linq;
-using Dodger.Core.Entities.Player;
-using Dodger.Core.Entities.World;
-using Dodger.Core.Graphics.Handlers;
-using Dodger.Core.Graphics.Renderers;
-using Dodger.Core.Persistance.Repositories.EnemyRepository;
-using IEnemyDisposer = Dodger.Core.Handlers.IEnemyDisposer;
-using IEnemySpawner = Dodger.Core.Handlers.IEnemySpawner;
-using IScoreHandler = Dodger.Core.Handlers.IScoreHandler;
+using Dodger.Core.Entities.Game.Components;
 
 namespace Dodger.Core.Entities.Game
 {
@@ -119,47 +112,5 @@ namespace Dodger.Core.Entities.Game
         {
             _itsOn = false;
         }
-    }
-
-
-    public class GameComponents
-    {
-        public GameComponents(IEnemySpawner enemySpawner, IEnemyDisposer enemyDisposer, IScoreHandler scoreHandler,
-            IWorld world, IPlayer player, IEnemyRepository enemyRepository)
-        {
-            EnemySpawner = enemySpawner ?? throw new ArgumentNullException(nameof(enemySpawner));
-            EnemyDisposer = enemyDisposer ?? throw new ArgumentNullException(nameof(enemyDisposer));
-            ScoreHandler = scoreHandler ?? throw new ArgumentNullException(nameof(scoreHandler));
-            World = world ?? throw new ArgumentNullException(nameof(world));
-            Player = player ?? throw new ArgumentNullException(nameof(player));
-            EnemyRepository = enemyRepository ?? throw new ArgumentNullException(nameof(enemyRepository));
-        }
-
-        public IEnemySpawner EnemySpawner { get; set; }
-        public IEnemyDisposer EnemyDisposer { get; set; }
-        public IScoreHandler ScoreHandler { get; set; }
-        public IWorld World { get; set; }
-        public IPlayer Player { get; set; }
-        public IEnemyRepository EnemyRepository { get; set; }
-    }
-
-    public class GameGraphicsComponents
-    {
-        public GameGraphicsComponents(IScoreRenderer scoreRenderer, IEnemyRenderer enemyRenderer,
-            IPlayerRenderer playerRenderer,
-            IInputHandler inputHandler, IHealthRenderer healthRenderer)
-        {
-            ScoreRenderer = scoreRenderer ?? throw new ArgumentNullException(nameof(scoreRenderer));
-            EnemyRenderer = enemyRenderer ?? throw new ArgumentNullException(nameof(enemyRenderer));
-            PlayerRenderer = playerRenderer ?? throw new ArgumentNullException(nameof(playerRenderer));
-            InputHandler = inputHandler ?? throw new ArgumentNullException(nameof(inputHandler));
-            HealthRenderer = healthRenderer ?? throw new ArgumentNullException(nameof(healthRenderer));
-        }
-
-        public IScoreRenderer ScoreRenderer { get; set; }
-        public IEnemyRenderer EnemyRenderer { get; set; }
-        public IPlayerRenderer PlayerRenderer { get; set; }
-        public IInputHandler InputHandler { get; set; }
-        public IHealthRenderer HealthRenderer { get; set; }
     }
 }

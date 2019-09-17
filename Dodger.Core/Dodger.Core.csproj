@@ -46,6 +46,8 @@
     <Compile Include="Entities\Components\Score\Score.cs" />
     <Compile Include="Entities\Enemy\Components\MovementComponent.cs" />
     <Compile Include="Entities\Enemy\Enemy.cs" />
+    <Compile Include="Entities\Game\Components\GameComponents.cs" />
+    <Compile Include="Entities\Game\Components\GameGraphicsComponents.cs" />
     <Compile Include="Entities\Game\Game.cs" />
     <Compile Include="Entities\IInteractingGameObject.cs" />
     <Compile Include="Entities\Player\Components\MovementComponent.cs" />
