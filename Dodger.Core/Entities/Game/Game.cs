@@ -16,31 +16,33 @@ namespace Dodger.Core.Entities.Game
         private readonly Timer _timer;
         private readonly GameComponents _components;
         private readonly GameGraphicsComponents _graphicsComponents;
-        private bool _isPlaying = true;
+        private bool _itsOn;
 
         public Game(Timer timer, GameComponents components, GameGraphicsComponents graphicsComponents)
         {
             _timer = timer ?? throw new ArgumentNullException(nameof(timer));
             _components = components ?? throw new ArgumentNullException(nameof(components));
             _graphicsComponents = graphicsComponents ?? throw new ArgumentNullException(nameof(graphicsComponents));
+            ConfigureEventHandlers();
         }
 
         public void Start()
         {
+            _itsOn = true;
             _timer.Tick += (sender, e) => Iteration();
         }
 
         private void Iteration()
         {
-            if (!_components.Player.Health.IsAlive)
+            if (!_itsOn)
                 return;
 
             UpdatePlayer();
             AddScore();
             UpdateEnemies();
+            DisposeEnemies();
             CheckForCollisions();
             SpawnEnemy();
-            DisposeEnemies();
             Render();
         }
 
@@ -116,6 +118,16 @@ namespace Dodger.Core.Entities.Game
                 enemy.Update(_components.World);
             }
         }
+
+        private void ConfigureEventHandlers()
+        {
+            _components.Player.Health.Died += (sender, e) => OnPlayerDied();
+        }
+
+        private void OnPlayerDied()
+        {
+            _itsOn = false;
+        }
     }
 
 
@@ -142,13 +154,10 @@ namespace Dodger.Core.Entities.Game
 
     public class GameGraphicsComponents
     {
-        public GameGraphicsComponents(Graphics.Handlers.IEnemySpawner enemySpawner,
-            Graphics.Handlers.IEnemyDisposer enemyDisposer,
-            IScoreRenderer scoreRenderer, IEnemyRenderer enemyRenderer, IPlayerRenderer playerRenderer,
+        public GameGraphicsComponents(IScoreRenderer scoreRenderer, IEnemyRenderer enemyRenderer,
+            IPlayerRenderer playerRenderer,
             IInputHandler inputHandler, IHealthRenderer healthRenderer)
         {
-            EnemySpawner = enemySpawner ?? throw new ArgumentNullException(nameof(enemySpawner));
-            EnemyDisposer = enemyDisposer ?? throw new ArgumentNullException(nameof(enemyDisposer));
             ScoreRenderer = scoreRenderer ?? throw new ArgumentNullException(nameof(scoreRenderer));
             EnemyRenderer = enemyRenderer ?? throw new ArgumentNullException(nameof(enemyRenderer));
             PlayerRenderer = playerRenderer ?? throw new ArgumentNullException(nameof(playerRenderer));
@@ -156,8 +165,6 @@ namespace Dodger.Core.Entities.Game
             HealthRenderer = healthRenderer ?? throw new ArgumentNullException(nameof(healthRenderer));
         }
 
-        public Graphics.Handlers.IEnemySpawner EnemySpawner { get; set; }
-        public Graphics.Handlers.IEnemyDisposer EnemyDisposer { get; set; }
         public IScoreRenderer ScoreRenderer { get; set; }
         public IEnemyRenderer EnemyRenderer { get; set; }
         public IPlayerRenderer PlayerRenderer { get; set; }

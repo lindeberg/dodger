@@ -5,7 +5,7 @@ using Dodger.Core.Entities.Player;
 using Dodger.Core.Graphics.Handlers;
 using Dodger.Core.ValueObjects;
 
-namespace Dodger.Graphics.Handlers
+namespace Dodger.Handlers
 {
     public class InputHandler : IInputHandler
     {

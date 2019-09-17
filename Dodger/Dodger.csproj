@@ -50,16 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\PlayerFactory.cs" />
-    <Compile Include="Graphics\Controls\Enemy\EnemyPictureBox.cs" />
-    <Compile Include="Graphics\Controls\PictureBox.cs" />
-    <Compile Include="Graphics\Handlers\EnemyDisposer.cs" />
-    <Compile Include="Graphics\Handlers\EnemySpawner.cs" />
-    <Compile Include="Graphics\Handlers\InputHandler.cs" />
-    <Compile Include="Graphics\Renderers\EnemyRenderer.cs" />
-    <Compile Include="Graphics\Renderers\HealthRenderer.cs" />
-    <Compile Include="Graphics\Renderers\PlayerRenderer.cs" />
-    <Compile Include="Graphics\Renderers\ScoreRenderer.cs" />
+    <Compile Include="Controls\Enemy\EnemyPictureBox.cs" />
+    <Compile Include="Controls\PictureBox.cs" />
+    <Compile Include="Controls\Player\PlayerPictureBox.cs" />
+    <Compile Include="Handlers\InputHandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +63,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\EnemyRenderer.cs" />
+    <Compile Include="Renderers\HealthRenderer.cs" />
+    <Compile Include="Renderers\PlayerRenderer.cs" />
+    <Compile Include="Renderers\ScoreRenderer.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

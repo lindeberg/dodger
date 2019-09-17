@@ -5,7 +5,7 @@ using Dodger.Core.ValueObjects;
 
 namespace Dodger.Core.Entities.Components.MovementComponent
 {
-    public abstract class MovementComponent : IMovementComponent
+    public class MovementComponent : IMovementComponent
     {
         private readonly IPhysicsComponent _physicsComponent;
 

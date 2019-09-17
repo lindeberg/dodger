@@ -1,10 +1,9 @@
 using System;
 using System.Windows.Forms;
 using Dodger.Core.Entities.Player;
-using Dodger.Core.Graphics.Handlers;
 using Dodger.Core.Graphics.Renderers;
 
-namespace Dodger.Graphics.Renderers
+namespace Dodger.Renderers
 {
     public class HealthRenderer : IHealthRenderer
     {

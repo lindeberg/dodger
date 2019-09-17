@@ -54,8 +54,7 @@
     <Compile Include="Entities\Timer.cs" />
     <Compile Include="Entities\World\IWorld.cs" />
     <Compile Include="Entities\World\World.cs" />
-    <Compile Include="Graphics\Handlers\IEnemyDisposer.cs" />
-    <Compile Include="Graphics\Handlers\IEnemySpawner.cs" />
+    <Compile Include="Factories\PlayerFactory.cs" />
     <Compile Include="Graphics\Handlers\IInputHandler.cs" />
     <Compile Include="Graphics\Renderers\IEnemyRenderer.cs" />
     <Compile Include="Graphics\Renderers\IHealthRenderer.cs" />
