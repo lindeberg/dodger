@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Dodger.Properties
+namespace Dodger.WinForms.Properties
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
@@ -45,7 +45,7 @@ namespace Dodger.Properties
                 if ((resourceMan == null))
                 {
                     global::System.Resources.ResourceManager temp =
-                        new global::System.Resources.ResourceManager("Dodger.Properties.Resources",
+                        new global::System.Resources.ResourceManager("Dodger.WinForms.Properties.Resources",
                             typeof(Resources).Assembly);
                     resourceMan = temp;
                 }

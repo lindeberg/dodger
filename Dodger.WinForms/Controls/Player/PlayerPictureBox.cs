@@ -1,6 +1,6 @@
 using Dodger.Core.ValueObjects;
 
-namespace Dodger.Controls.Player
+namespace Dodger.WinForms.Controls.Player
 {
     public class PlayerPictureBox : PictureBox
     {

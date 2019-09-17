@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Dodger.Core.Entities.Player;
 using Dodger.Core.Graphics.Renderers;
 
-namespace Dodger.Renderers
+namespace Dodger.WinForms.Renderers
 {
     public class HealthRenderer : IHealthRenderer
     {

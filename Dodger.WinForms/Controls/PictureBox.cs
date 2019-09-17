@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using Point = Dodger.Core.ValueObjects.Point;
 using Size = Dodger.Core.ValueObjects.Size;
 
-namespace Dodger.Controls
+namespace Dodger.WinForms.Controls
 {
     public class PictureBox : System.Windows.Forms.PictureBox
     {

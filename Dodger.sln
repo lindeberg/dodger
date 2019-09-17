@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dodger", "Dodger\Dodger.csproj", "{0832CB9E-3370-42AD-A205-8CAEDE83758A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dodger.WinForms", "Dodger.WinForms\Dodger.WinForms.csproj", "{0832CB9E-3370-42AD-A205-8CAEDE83758A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dodger.Core", "Dodger.Core\Dodger.Core.csproj", "{C872AF47-DA7E-49C4-9DF9-CEE4DE8696B9}"
 EndProject

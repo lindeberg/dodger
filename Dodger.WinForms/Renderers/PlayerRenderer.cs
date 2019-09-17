@@ -1,13 +1,13 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using Dodger.Controls.Player;
 using Dodger.Core.Entities.Player;
 using Dodger.Core.Graphics.Renderers;
 using Dodger.Core.ValueObjects;
+using Dodger.WinForms.Controls.Player;
 using Point = System.Drawing.Point;
 
-namespace Dodger.Renderers
+namespace Dodger.WinForms.Renderers
 {
     public class PlayerRenderer : IPlayerRenderer
     {

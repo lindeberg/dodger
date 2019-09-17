@@ -1,7 +1,7 @@
 using System;
 using Dodger.Core.ValueObjects;
 
-namespace Dodger.Controls.Enemy
+namespace Dodger.WinForms.Controls.Enemy
 {
     public class EnemyPictureBox : PictureBox
     {

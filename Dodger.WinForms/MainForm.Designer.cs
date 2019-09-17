@@ -1,4 +1,4 @@
-﻿namespace Dodger
+﻿namespace Dodger.WinForms
 {
   partial class MainForm
   {

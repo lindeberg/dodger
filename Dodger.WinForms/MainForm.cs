@@ -7,14 +7,14 @@ using Dodger.Core.Factories;
 using Dodger.Core.Persistance.Repositories;
 using Dodger.Core.Repositories.EnemyRepository;
 using Dodger.Core.ValueObjects;
-using Dodger.Handlers;
-using Dodger.Renderers;
+using Dodger.WinForms.Handlers;
+using Dodger.WinForms.Renderers;
 using EnemyDisposer = Dodger.Core.Handlers.EnemyDisposer;
 using EnemySpawner = Dodger.Core.Handlers.EnemySpawner;
 using ScoreHandler = Dodger.Core.Handlers.ScoreHandler;
 using Timer = Dodger.Core.Entities.Timer;
 
-namespace Dodger
+namespace Dodger.WinForms
 {
     public partial class MainForm : Form
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0832CB9E-3370-42AD-A205-8CAEDE83758A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Dodger</RootNamespace>
-    <AssemblyName>Dodger</AssemblyName>
+    <RootNamespace>Dodger.WinForms</RootNamespace>
+    <AssemblyName>Dodger.WinForms</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

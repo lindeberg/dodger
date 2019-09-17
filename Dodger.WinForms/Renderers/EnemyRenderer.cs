@@ -1,12 +1,12 @@
 using System;
 using System.Drawing;
 using System.Linq;
-using Dodger.Controls.Enemy;
 using Dodger.Core.Entities.Enemy;
 using Dodger.Core.Graphics.Renderers;
 using Dodger.Core.Repositories.EnemyRepository;
+using Dodger.WinForms.Controls.Enemy;
 
-namespace Dodger.Renderers
+namespace Dodger.WinForms.Renderers
 {
     public class EnemyRenderer : IEnemyRenderer
     {
