@@ -13,26 +13,18 @@ namespace Dodger.Core.Entities.Game
 {
     public class Game
     {
-        private readonly Timer _timer;
         private readonly GameComponents _components;
         private readonly GameGraphicsComponents _graphicsComponents;
-        private bool _itsOn;
+        private bool _itsOn = true;
 
-        public Game(Timer timer, GameComponents components, GameGraphicsComponents graphicsComponents)
+        public Game(GameComponents components, GameGraphicsComponents graphicsComponents)
         {
-            _timer = timer ?? throw new ArgumentNullException(nameof(timer));
             _components = components ?? throw new ArgumentNullException(nameof(components));
             _graphicsComponents = graphicsComponents ?? throw new ArgumentNullException(nameof(graphicsComponents));
             ConfigureEventHandlers();
         }
 
-        public void Start()
-        {
-            _itsOn = true;
-            _timer.Tick += (sender, e) => Iteration();
-        }
-
-        private void Iteration()
+        public void Update()
         {
             if (!_itsOn)
                 return;
@@ -43,15 +35,14 @@ namespace Dodger.Core.Entities.Game
             DisposeEnemies();
             CheckForCollisions();
             SpawnEnemy();
-            Render();
         }
-
-        private void Render()
+        
+        public void Render()
         {
-            RenderHealth();
-            RenderPoints();
             RenderPlayer();
             RenderEnemies();
+            RenderHealth();
+            RenderScore();
         }
 
         private void RenderPlayer()
@@ -67,7 +58,7 @@ namespace Dodger.Core.Entities.Game
             }
         }
 
-        private void RenderPoints()
+        private void RenderScore()
         {
             _graphicsComponents.ScoreRenderer.Render(_components.Player);
         }

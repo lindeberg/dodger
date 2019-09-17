@@ -20,19 +20,24 @@ namespace Dodger.WinForms
 
             var world = new World(new Size(Width, Height));
             var player = new PlayerFactory().CreatePlayer(world);
-
-            CreateGame(world, player)
-                .Start();
+            var game = CreateGame(world, player);
+            
+            WireUpTimer().Tick += (sender, args) =>
+            {
+                game.Update();
+                game.Render();
+            };
+            
         }
+
 
         private Game CreateGame(IWorld world, Player player)
         {
             var enemyRepository = new EnemyRepository();
             var gameComponents = BuildGameComponents(world, player, enemyRepository);
             var gameGraphicsComponents = BuildGameGraphicsComponents(enemyRepository, player);
-            var gameTimer = WireUpTimer();
 
-            return new Game(gameTimer, gameComponents, gameGraphicsComponents);
+            return new Game(gameComponents, gameGraphicsComponents);
         }
 
         private Timer WireUpTimer()
