@@ -1,7 +1,7 @@
 using System;
 using Dodger.Core.Entities.Enemy;
 
-namespace Dodger.Core.Repositories.EnemyRepository
+namespace Dodger.Core.Persistance.Repositories.EnemyRepository
 {
     public class RemovedEventArgs
     {

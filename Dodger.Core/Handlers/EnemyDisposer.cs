@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Dodger.Core.Entities.Enemy;
 using Dodger.Core.Entities.World;
-using Dodger.Core.Repositories.EnemyRepository;
+using Dodger.Core.Persistance.Repositories.EnemyRepository;
 
 namespace Dodger.Core.Handlers
 {

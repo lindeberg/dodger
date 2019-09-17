@@ -4,7 +4,7 @@ using Dodger.Core.Entities.Player;
 using Dodger.Core.Entities.World;
 using Dodger.Core.Graphics.Handlers;
 using Dodger.Core.Graphics.Renderers;
-using Dodger.Core.Repositories.EnemyRepository;
+using Dodger.Core.Persistance.Repositories.EnemyRepository;
 using IEnemyDisposer = Dodger.Core.Handlers.IEnemyDisposer;
 using IEnemySpawner = Dodger.Core.Handlers.IEnemySpawner;
 using IScoreHandler = Dodger.Core.Handlers.IScoreHandler;

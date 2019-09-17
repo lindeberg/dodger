@@ -22,14 +22,15 @@ namespace Dodger.Core.Factories
 
         private Size GetPlayerSize(IWorld world)
         {
-            var width = (int) (world.Size.Width * 0.1);
+            const double playerSizeVariable = 0.07;
+            var width = (int) (world.Size.Width * playerSizeVariable);
             return new Size(width, width);
         }
 
         private Point GetSpawnLocation(IWorld world, Size size)
         {
             var x = world.Size.Width / 2 - size.Width / 2;
-            var y = world.Size.Height - size.Height;
+            var y = world.Size.Height - size.Height * 2;
             return new Point(x, y);
         }
     }

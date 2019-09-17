@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Dodger.Core.Entities.Enemy;
-using Dodger.Core.Persistance.Repositories;
 
-namespace Dodger.Core.Repositories.EnemyRepository
+namespace Dodger.Core.Persistance.Repositories.EnemyRepository
 {
     public interface IEnemyRepository
     {

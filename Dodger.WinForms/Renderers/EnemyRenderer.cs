@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Linq;
 using Dodger.Core.Entities.Enemy;
 using Dodger.Core.Graphics.Renderers;
-using Dodger.Core.Repositories.EnemyRepository;
+using Dodger.Core.Persistance.Repositories.EnemyRepository;
 using Dodger.WinForms.Controls.Enemy;
 
 namespace Dodger.WinForms.Renderers

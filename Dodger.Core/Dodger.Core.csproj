@@ -66,10 +66,11 @@
     <Compile Include="Handlers\IEnemySpawner.cs" />
     <Compile Include="Handlers\IScoreHandler.cs" />
     <Compile Include="Handlers\ScoreHandler.cs" />
-    <Compile Include="Persistance\Repositories\EnemyRepository.cs" />
+    <Compile Include="Helpers\Random.cs" />
+    <Compile Include="Persistance\Repositories\EnemyRepository\EnemyRepository.cs" />
+    <Compile Include="Persistance\Repositories\EnemyRepository\IEnemyRepository.cs" />
+    <Compile Include="Persistance\Repositories\EnemyRepository\RemovedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\EnemyRepository\IEnemyRepository.cs" />
-    <Compile Include="Repositories\EnemyRepository\RemovedEventArgs.cs" />
     <Compile Include="ValueObjects\Direction.cs" />
     <Compile Include="ValueObjects\Point.cs" />
     <Compile Include="ValueObjects\Size.cs" />

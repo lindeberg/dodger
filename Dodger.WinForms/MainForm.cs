@@ -1,17 +1,13 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Dodger.Core.Entities.Game;
 using Dodger.Core.Entities.Player;
 using Dodger.Core.Entities.World;
 using Dodger.Core.Factories;
-using Dodger.Core.Persistance.Repositories;
-using Dodger.Core.Repositories.EnemyRepository;
+using Dodger.Core.Handlers;
+using Dodger.Core.Persistance.Repositories.EnemyRepository;
 using Dodger.Core.ValueObjects;
 using Dodger.WinForms.Handlers;
 using Dodger.WinForms.Renderers;
-using EnemyDisposer = Dodger.Core.Handlers.EnemyDisposer;
-using EnemySpawner = Dodger.Core.Handlers.EnemySpawner;
-using ScoreHandler = Dodger.Core.Handlers.ScoreHandler;
 using Timer = Dodger.Core.Entities.Timer;
 
 namespace Dodger.WinForms

@@ -29,17 +29,13 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.ComponentModel.ComponentResourceManager resources =
-        new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.scoreValueLabel = new System.Windows.Forms.Label();
       this.scoreLabel = new System.Windows.Forms.Label();
       this.enemySpawnTimer = new System.Windows.Forms.Timer(this.components);
-      this.playerPictureBox = new System.Windows.Forms.PictureBox();
       this.scoreTimer = new System.Windows.Forms.Timer(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
       this.label1 = new System.Windows.Forms.Label();
       this.healthValueLabel = new System.Windows.Forms.Label();
-      ((System.ComponentModel.ISupportInitialize) (this.playerPictureBox)).BeginInit();
       this.SuspendLayout();
       // 
       // scoreValueLabel
@@ -48,7 +44,7 @@
       this.scoreValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
       this.scoreValueLabel.Location = new System.Drawing.Point(102, 21);
       this.scoreValueLabel.Name = "scoreValueLabel";
-      this.scoreValueLabel.Size = new System.Drawing.Size(27, 35);
+      this.scoreValueLabel.Size = new System.Drawing.Size(57, 35);
       this.scoreValueLabel.TabIndex = 1;
       this.scoreValueLabel.Text = "0";
       // 
@@ -64,17 +60,6 @@
       // 
       this.enemySpawnTimer.Enabled = true;
       // 
-      // playerPictureBox
-      // 
-      this.playerPictureBox.Image = ((System.Drawing.Image) (resources.GetObject("playerPictureBox.Image")));
-      this.playerPictureBox.Location = new System.Drawing.Point(342, 412);
-      this.playerPictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.playerPictureBox.Name = "playerPictureBox";
-      this.playerPictureBox.Size = new System.Drawing.Size(28, 29);
-      this.playerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-      this.playerPictureBox.TabIndex = 3;
-      this.playerPictureBox.TabStop = false;
-      // 
       // scoreTimer
       // 
       this.scoreTimer.Enabled = true;
@@ -89,16 +74,16 @@
       // 
       this.label1.Location = new System.Drawing.Point(28, 52);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(67, 26);
+      this.label1.Size = new System.Drawing.Size(67, 27);
       this.label1.TabIndex = 4;
       this.label1.Text = "Health:";
       // 
       // healthValueLabel
       // 
       this.healthValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-      this.healthValueLabel.Location = new System.Drawing.Point(101, 52);
+      this.healthValueLabel.Location = new System.Drawing.Point(102, 52);
       this.healthValueLabel.Name = "healthValueLabel";
-      this.healthValueLabel.Size = new System.Drawing.Size(27, 26);
+      this.healthValueLabel.Size = new System.Drawing.Size(27, 27);
       this.healthValueLabel.TabIndex = 5;
       this.healthValueLabel.Text = "5";
       // 
@@ -110,7 +95,6 @@
       this.ClientSize = new System.Drawing.Size(1080, 619);
       this.Controls.Add(this.healthValueLabel);
       this.Controls.Add(this.label1);
-      this.Controls.Add(this.playerPictureBox);
       this.Controls.Add(this.scoreLabel);
       this.Controls.Add(this.scoreValueLabel);
       this.Location = new System.Drawing.Point(22, 22);
@@ -118,7 +102,6 @@
       this.MaximumSize = new System.Drawing.Size(1102, 675);
       this.MinimumSize = new System.Drawing.Size(1102, 675);
       this.Name = "MainForm";
-      ((System.ComponentModel.ISupportInitialize) (this.playerPictureBox)).EndInit();
       this.ResumeLayout(false);
     }
 
@@ -126,7 +109,6 @@
 
     private System.Windows.Forms.Timer enemySpawnTimer;
     private System.Windows.Forms.Timer scoreTimer;
-    private System.Windows.Forms.PictureBox playerPictureBox;
     private System.Windows.Forms.Timer timer;
     private System.Windows.Forms.Label scoreLabel;
     private System.Windows.Forms.Label scoreValueLabel;
