@@ -11,6 +11,7 @@ namespace Dodger.WinForms.Handlers
     {
         private readonly MainForm _form;
         private readonly IPlayer _player;
+        private Keys? _currentKey;
 
         public InputHandler(IPlayer player, MainForm form)
         {
@@ -20,10 +21,22 @@ namespace Dodger.WinForms.Handlers
             ConfigureEvents();
         }
 
+        public void Update()
+        {
+            if (_currentKey.HasValue)
+            {
+                Move(_currentKey.Value);
+            }
+            else
+            {
+                StopMoving();
+            }
+        }
+
         private void ConfigureEvents()
         {
-            _form.KeyDown += (sender, e) => SetDirection(e);
-            _form.KeyUp += (sender, e) => StopMoving();
+            _form.KeyDown += (sender, e) => _currentKey = e.KeyCode;
+            _form.KeyUp += (sender, e) => _currentKey = null;
         }
 
         private void StopMoving()
@@ -31,29 +44,15 @@ namespace Dodger.WinForms.Handlers
             _player.MovementComponent.StopMoving();
         }
 
-        private void SetDirection(KeyEventArgs e)
+        private void Move(Keys key)
         {
-            var keyBindings = new Dictionary<Keys, Action>
-            {
-                {Keys.Up, () => MovePlayer(Keys.Up)},
-                {Keys.Down, () => MovePlayer(Keys.Down)},
-                {Keys.Left, () => MovePlayer(Keys.Left)},
-                {Keys.Right, () => MovePlayer(Keys.Right)},
-            };
-
-            if (keyBindings.ContainsKey(e.KeyCode))
-                keyBindings[e.KeyCode].Invoke();
-        }
-
-        private void MovePlayer(Keys key)
-        {
-            var keyDirections = new Dictionary<Keys, Direction>
-            {
-                {Keys.Up, Direction.Up},
-                {Keys.Down, Direction.Down},
-                {Keys.Left, Direction.Left},
-                {Keys.Right, Direction.Right},
-            };
+                var keyDirections = new Dictionary<Keys, Direction>
+                {
+                    {Keys.Up, Direction.Up},
+                    {Keys.Down, Direction.Down},
+                    {Keys.Left, Direction.Left},
+                    {Keys.Right, Direction.Right},
+                };
 
             var direction = keyDirections[key];
 

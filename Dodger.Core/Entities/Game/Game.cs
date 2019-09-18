@@ -22,6 +22,7 @@ namespace Dodger.Core.Entities.Game
             if (!_itsOn)
                 return;
 
+            HandleInput();
             UpdatePlayer();
             AddScore();
             UpdateEnemies();
@@ -29,13 +30,18 @@ namespace Dodger.Core.Entities.Game
             CheckForCollisions();
             SpawnEnemy();
         }
-        
+
         public void Render()
         {
             RenderPlayer();
             RenderEnemies();
             RenderHealth();
             RenderScore();
+        }
+        
+        private void HandleInput()
+        {
+            _graphicsComponents.InputHandler.Update();
         }
 
         private void RenderPlayer()

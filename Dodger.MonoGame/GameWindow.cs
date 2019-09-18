@@ -21,7 +21,7 @@ namespace Dodger.MonoGame
             
             var world = new World(new Size(Window.ClientBounds.Width, Window.ClientBounds.Height));
             var player = new PlayerFactory().CreatePlayer(world);
-            _game = new GameFactory().CreateGame(world, player, this, _spriteBatch);
+            _game = new GameFactory().CreateGame(world, player, _spriteBatch, Content);
         }
 
         protected override void LoadContent()
