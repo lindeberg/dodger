@@ -10,27 +10,26 @@ namespace Dodger.MonoGame
 {
     public class GameWindow : Game
     {
-        private GraphicsDeviceManager _graphics;
+        private readonly GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private readonly Core.Entities.Game.Game _game;
+        private Core.Entities.Game.Game _game;
 
         public GameWindow()
         {
             _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = @"Content\bin";
-            
+            Content.RootDirectory = @"Content\bin\Windows";
+        }
+
+        protected override void BeginRun()
+        {
             var world = new World(new Size(Window.ClientBounds.Width, Window.ClientBounds.Height));
             var player = new PlayerFactory().CreatePlayer(world);
-            _game = new GameFactory().CreateGame(world, player, _spriteBatch, Content);
+            _game = new GameFactory().CreateGame(world, player, _spriteBatch, Content, _graphics);
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-        }
-
-        protected override void UnloadContent()
-        {
         }
 
         protected override void Update(GameTime gameTime)

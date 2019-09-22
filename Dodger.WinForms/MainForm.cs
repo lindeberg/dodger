@@ -1,7 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System.Linq;
+using System.Windows.Forms;
 using Dodger.Core.Entities.World;
 using Dodger.Core.Factories;
 using Dodger.Core.ValueObjects;
+using Dodger.WinForms.Controls.Enemy;
 using Dodger.WinForms.Factories;
 
 namespace Dodger.WinForms

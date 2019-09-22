@@ -20,12 +20,13 @@ namespace Dodger.MonoGame.Handlers
         public void Update()
         {
             var keyboardState = Keyboard.GetState();
-            
-            if(!keyboardState.GetPressedKeys().Any()){
+
+            if (!keyboardState.GetPressedKeys().Any())
+            {
                 _player.MovementComponent.StopMoving();
                 return;
             }
-            
+
             var keyDirections = new Dictionary<Keys, Direction>
             {
                 {Keys.Up, Direction.Up},
@@ -36,8 +37,10 @@ namespace Dodger.MonoGame.Handlers
 
             foreach (var key in keyboardState.GetPressedKeys())
             {
-                var direction = keyDirections[key];
-                _player.MovementComponent.SetDirection(direction);
+                if (keyDirections.TryGetValue(key, out var direction))
+                {
+                    _player.MovementComponent.SetDirection(direction);
+                }
             }
         }
     }

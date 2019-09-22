@@ -11,12 +11,12 @@ namespace Dodger.Core.ValueObjects
         public readonly int X;
         public readonly int Y;
 
-        public bool IsWithinDimensions(Size mapSize, Size objectSize)
+        public bool IsWithinDimensions(Size mapSize, Size objectSize, int extra = 0)
         {
-            return X >= 0 &&
-                   Y >= 0 &&
-                   X <= mapSize.Width - objectSize.Width   &&
-                   Y <= mapSize.Height - objectSize.Height;
+            return X >= 0 - extra &&
+                   Y >= 0 - extra &&
+                   X <= mapSize.Width - objectSize.Width - extra &&
+                   Y <= mapSize.Height - objectSize.Height - extra;
         }
         
         public static bool operator ==(Point point1, Point point2)

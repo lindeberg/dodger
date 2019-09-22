@@ -22,14 +22,18 @@ namespace Dodger.MonoGame.Renderers
         {
             if (player == null) throw new ArgumentNullException(nameof(player));
 
-            var texture = _contentManager.Load<Texture2D>("player");
+            var texture = GetTexture();
             var rectangle = GetRectangle(player);
             
             _spriteBatch.Draw(texture, rectangle, Color.White);
-
         }
 
-        private Rectangle GetRectangle(IPlayer player)
+        private Texture2D GetTexture()
+        {
+            return _contentManager.Load<Texture2D>("Images/player");
+        }
+
+        private static Rectangle GetRectangle(IPlayer player)
         {
             var point = new Point(player.PhysicsComponent.Location.X, player.PhysicsComponent.Location.Y);
             var size = new Point(player.PhysicsComponent.Size.Width, player.PhysicsComponent.Size.Height);

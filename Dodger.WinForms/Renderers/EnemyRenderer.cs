@@ -22,7 +22,6 @@ namespace Dodger.WinForms.Renderers
 
         private void ConfigureEventHandlers()
         {
-            //TODO: Figure out how to remove event listening here
             _enemyRepository.Removed += (sender, e) => Remove(e.Enemy);
             _enemyRepository.Added += (sender, e) => Render(e.Enemy);
         }
