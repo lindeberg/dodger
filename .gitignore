@@ -1,7 +1,0 @@
-bin/
-obj/
-src/packages/
-src/Dodger.sln.DotSettings
-/src/Dodger.WinForms/Dodger.WinForms.csproj.DotSettings
-.vs/
-.idea/
