@@ -39,13 +39,13 @@ namespace Dodger.Core.Handlers
 
         private int CreateRandomMovementSpeed()
         {
-            return Random.Next(3, 6);
+            return Random.Next(4, 8);
         }
 
         private static bool ShouldSpawn()
         {
             var value = Random.Next(0, 1000);
-            return value > 910;
+            return value > 800;
         }
 
         private Point CreateRandomPoint()

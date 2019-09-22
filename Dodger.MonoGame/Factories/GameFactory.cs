@@ -43,7 +43,7 @@ namespace Dodger.MonoGame.Factories
 
             var scoreRenderer = new ScoreRenderer(spriteBatch, contentManager);
             var playerRenderer = new PlayerRenderer(spriteBatch, contentManager);
-            var enemyRenderer = new EnemyRenderer(enemyRepository, spriteBatch, contentManager);
+            var enemyRenderer = new EnemyRenderer(spriteBatch, contentManager);
             var healthRenderer = new HealthRenderer(spriteBatch, contentManager);
             var inputHandler = new InputHandler(player);
 

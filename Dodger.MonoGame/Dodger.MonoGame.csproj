@@ -70,6 +70,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\AssetNames\Enemy.cs" />
+    <Compile Include="Content\AssetNames\Health.cs" />
+    <Compile Include="Content\AssetNames\Player.cs" />
+    <Compile Include="Content\AssetNames\Score.cs" />
     <Compile Include="Factories\GameFactory.cs" />
     <Compile Include="GameWindow.cs" />
     <Compile Include="Handlers\InputHandler.cs" />

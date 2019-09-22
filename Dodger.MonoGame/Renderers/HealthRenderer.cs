@@ -38,7 +38,7 @@ namespace Dodger.MonoGame.Renderers
 
         private SpriteFont GetSpriteFont()
         {
-            return _contentManager.Load<SpriteFont>("Fonts/health");
+            return _contentManager.Load<SpriteFont>(Content.AssetNames.Health.Font);
         }
     }
 }

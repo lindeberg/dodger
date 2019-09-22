@@ -11,6 +11,7 @@ namespace Dodger.Core.ValueObjects
         public readonly int X;
         public readonly int Y;
 
+        //TODO: Get rid of this extra parameter shit
         public bool IsWithinDimensions(Size mapSize, Size objectSize, int extra = 0)
         {
             return X >= 0 - extra &&

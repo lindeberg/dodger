@@ -37,7 +37,7 @@ namespace Dodger.MonoGame.Renderers
 
         private SpriteFont GetSpriteFont()
         {
-            return _contentManager.Load<SpriteFont>("Fonts/score");
+            return _contentManager.Load<SpriteFont>(Content.AssetNames.Score.Font);
         }
     }
 }

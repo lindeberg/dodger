@@ -31,7 +31,7 @@ namespace Dodger.Core.Handlers
         {
             if (enemy == null) throw new ArgumentNullException(nameof(enemy));
 
-            if (enemy.PhysicsComponent.Location.IsWithinDimensions(_world.Size, enemy.PhysicsComponent.Size, 5))
+            if (enemy.PhysicsComponent.Location.IsWithinDimensions(_world.Size, enemy.PhysicsComponent.Size, 10))
                 return;
 
             _enemyRepository.Remove(enemy);

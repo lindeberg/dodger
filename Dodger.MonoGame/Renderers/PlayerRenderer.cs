@@ -30,11 +30,13 @@ namespace Dodger.MonoGame.Renderers
 
         private Texture2D GetTexture()
         {
-            return _contentManager.Load<Texture2D>("Images/player");
+            return _contentManager.Load<Texture2D>(Content.AssetNames.Player.Texture);
         }
 
         private static Rectangle GetRectangle(IPlayer player)
         {
+            if (player == null) throw new ArgumentNullException(nameof(player));
+            
             var point = new Point(player.PhysicsComponent.Location.X, player.PhysicsComponent.Location.Y);
             var size = new Point(player.PhysicsComponent.Size.Width, player.PhysicsComponent.Size.Height);
             return new Rectangle(point, size);
