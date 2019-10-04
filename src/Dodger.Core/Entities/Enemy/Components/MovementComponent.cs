@@ -6,6 +6,7 @@ namespace Dodger.Core.Entities.Enemy.Components
     {
         public MovementComponent(int movementSpeed, IPhysicsComponent physicsComponent) : base(movementSpeed, physicsComponent)
         {
+            MovementSpeed = 1;
         }
     }
 }
